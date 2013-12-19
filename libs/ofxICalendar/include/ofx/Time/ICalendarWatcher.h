@@ -72,7 +72,6 @@ public:
         ///<     void ListenerClass::onCalendarWatcherEventStarted(const ICalendarWatcherEventArgs& args);
         ///<     void ListenerClass::onCalendarWatcherEventEnded(const ICalendarWatcherEventArgs& args);
         ///<     void ListenerClass::onCalendarWatcherError(const Poco::Exception& args);
-        ///<
         ///< Users interested in custom callback names should manually register
         ///< callbacks for specific events using the ofAddListener() method.
     {
@@ -95,7 +94,6 @@ public:
         ///<     void ListenerClass::onCalendarWatcherEventStarted(const ICalendarWatcherEventArgs& args);
         ///<     void ListenerClass::onCalendarWatcherEventEnded(const ICalendarWatcherEventArgs& args);
         ///<     void ListenerClass::onCalendarWatcherError(const Poco::Exception& args);
-        ///<
         ///< Users interested in custom callback names should manually register
         ///< callbacks for specific events using the ofRemoveListener() method.
     {
