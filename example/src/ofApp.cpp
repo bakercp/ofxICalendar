@@ -32,8 +32,10 @@ void ofApp::setup()
     ofEnableAlphaBlending();
     ofSetFrameRate(30);
 
+    // currently basic.ics is being downloaded from here
     // "https://www.google.com/calendar/ical/christopherbaker.net_91ul9n5dq2b6pkmin511q3bq14%40group.calendar.google.com/public/basic.ics";
 
+    // update it every minute
     calendar = ICalendar::makeShared("basic.ics", 60000);
 
     watcher = ICalendarWatcher::makeShared(calendar);
@@ -86,15 +88,11 @@ void ofApp::mouseDragged(int x, int y, int button)
 //------------------------------------------------------------------------------
 void ofApp::mousePressed(int x, int y, int button)
 {
-    cout << "mouse pressed" << endl;
-    calendar->setAutoRefreshInterval(0);
 }
 
 //------------------------------------------------------------------------------
 void ofApp::mouseReleased(int x, int y, int button)
 {
-    cout << "mouse released" << endl;
-    calendar->setAutoRefreshInterval(5000);
 }
 
 //------------------------------------------------------------------------------
