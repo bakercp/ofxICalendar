@@ -1,0 +1,978 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4b14cedcc7195a4d1f8e28b4f9635a89 /* ofApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19c22cd05d10f78b32ff80c6be3a9385 /* ofApp.cpp */; };
+		4c4dc48d8eda51d39a2f3fefa945e80c /* ICalendarEventInstance.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 808f104900dc4abf7c9a283ce9c19f73 /* ICalendarEventInstance.cpp */; };
+		532af6d7e3cb5ae24d160140f3ad5d7c /* Utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 44ff7f4131bdb1710cf68aa41f5fe5ff /* Utils.cpp */; };
+		57ccb82e829a8c5006d6ba4dfb76a82d /* ICalendarEvents.cpp in Sources */ = {isa = PBXBuildFile; fileRef = c01b4fdd9fda7247d3f2506f371929d3 /* ICalendarEvents.cpp */; };
+		67d48576d3e2a3a04befb5d82602c951 /* ICalendarUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81f2f589d6fa418817dbb1a4f0e13cb0 /* ICalendarUtils.cpp */; };
+		7570bc55ef560d2a8837979697062ba9 /* ICalendar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = a2971775bfcf3ead4b4467549d964a44 /* ICalendar.cpp */; };
+		7a8f528177bfbe34b9d4573e203871c0 /* ICalendarWatcher.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0860ff1760186115e6caafb1ffa537b4 /* ICalendarWatcher.cpp */; };
+		99a2c610b105a9d6fca5256be68e775b /* ICalendarEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 059fb29fa1a0254e953d64096eb950da /* ICalendarEvent.cpp */; };
+		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
+		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
+		E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9710E8CC7DD009D7055 /* AGL.framework */; };
+		E45BE97C0E8CC7DD009D7055 /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9720E8CC7DD009D7055 /* ApplicationServices.framework */; };
+		E45BE97D0E8CC7DD009D7055 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9730E8CC7DD009D7055 /* AudioToolbox.framework */; };
+		E45BE97E0E8CC7DD009D7055 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9740E8CC7DD009D7055 /* Carbon.framework */; };
+		E45BE97F0E8CC7DD009D7055 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9750E8CC7DD009D7055 /* CoreAudio.framework */; };
+		E45BE9800E8CC7DD009D7055 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9760E8CC7DD009D7055 /* CoreFoundation.framework */; };
+		E45BE9810E8CC7DD009D7055 /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9770E8CC7DD009D7055 /* CoreServices.framework */; };
+		E45BE9830E8CC7DD009D7055 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9790E8CC7DD009D7055 /* OpenGL.framework */; };
+		E45BE9840E8CC7DD009D7055 /* QuickTime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE97A0E8CC7DD009D7055 /* QuickTime.framework */; };
+		E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E4B69E1D0A3A1BDC003C02F2 /* main.cpp */; };
+		E4C2424710CC5A17004149E2 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C2424410CC5A17004149E2 /* AppKit.framework */; };
+		E4C2424810CC5A17004149E2 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C2424510CC5A17004149E2 /* Cocoa.framework */; };
+		E4C2424910CC5A17004149E2 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C2424610CC5A17004149E2 /* IOKit.framework */; };
+		E4EB6799138ADC1D00A09F29 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
+		E7E077E515D3B63C0020DFD4 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E415D3B63C0020DFD4 /* CoreVideo.framework */; };
+		E7E077E815D3B6510020DFD4 /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E715D3B6510020DFD4 /* QTKit.framework */; };
+		E7F985F815E0DEA3003869B5 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7F985F515E0DE99003869B5 /* Accelerate.framework */; };
+		FD08B98118568A3400A4A757 /* CalendarWidget.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FD08B97F18568A3400A4A757 /* CalendarWidget.cpp */; };
+		FDDEB86F185792440063D2AD /* Period.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FDDEB86E185792440063D2AD /* Period.cpp */; };
+		ee13e17f76edda9f03b9bac10729e4c8 /* Interval.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 96ce09e743ec1c97161ce790c039bf2e /* Interval.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E4328147138ABC890047C5CB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = E4B27C1510CBEB8E00536013;
+			remoteInfo = openFrameworks;
+		};
+		E4EEB9AB138B136A00A80321 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = E4B27C1410CBEB8E00536013;
+			remoteInfo = openFrameworks;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		E4C2427710CC5ABF004149E2 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		0107ed8cb016fb5b2b3050afc3a0269a /* icalerror.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = icalerror.h; path = ../../../addons/ofxICalendar/libs/libical/include/libical/icalerror.h; sourceTree = SOURCE_ROOT; };
+		037f09806edca641632f0483ff8e926e /* icalgauge.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = icalgauge.h; path = ../../../addons/ofxICalendar/libs/libical/include/libical/icalgauge.h; sourceTree = SOURCE_ROOT; };
+		04f62d09a54f038a87340ff91be7a9f8 /* icalmessage.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = icalmessage.h; path = ../../../addons/ofxICalendar/libs/libical/include/libical/icalmessage.h; sourceTree = SOURCE_ROOT; };
+		059fb29fa1a0254e953d64096eb950da /* ICalendarEvent.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ICalendarEvent.cpp; path = ../../../addons/ofxICalendar/libs/ofxICalendar/src/ICalendarEvent.cpp; sourceTree = SOURCE_ROOT; };
+		065ac877e89d78c6aaa31c9f1b42a48e /* icalmemory.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = icalmemory.h; path = ../../../addons/ofxICalendar/libs/libical/include/libical/icalmemory.h; sourceTree = SOURCE_ROOT; };
+		0860ff1760186115e6caafb1ffa537b4 /* ICalendarWatcher.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ICalendarWatcher.cpp; path = ../../../addons/ofxICalendar/libs/ofxICalendar/src/ICalendarWatcher.cpp; sourceTree = SOURCE_ROOT; };
+		0cd68f5c93397ee31799e2a0c7a46437 /* icalarray.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = icalarray.h; path = ../../../addons/ofxICalendar/libs/libical/include/libical/icalarray.h; sourceTree = SOURCE_ROOT; };
+		0dc0d147f7c0205143ca91fc3465aebf /* icptrholder.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = icptrholder.h; path = ../../../addons/ofxICalendar/libs/libical/include/libical/icptrholder.h; sourceTree = SOURCE_ROOT; };
+		130a49032b21b428d7acd7fcdb1b6993 /* icalmime.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = icalmime.h; path = ../../../addons/ofxICalendar/libs/libical/include/libical/icalmime.h; sourceTree = SOURCE_ROOT; };
+		14310c1ed3e9617fa4bc9d5568dc25a0 /* icalproperty.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = icalproperty.h; path = ../../../addons/ofxICalendar/libs/libical/include/libical/icalproperty.h; sourceTree = SOURCE_ROOT; };
+		18c663dd32bfe9540ec7a67b8251fef5 /* icalgaugeimpl.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = icalgaugeimpl.h; path = ../../../addons/ofxICalendar/libs/libical/include/libical/icalgaugeimpl.h; sourceTree = SOURCE_ROOT; };
+		19c22cd05d10f78b32ff80c6be3a9385 /* ofApp.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofApp.cpp; path = src/ofApp.cpp; sourceTree = SOURCE_ROOT; };
+		1c8ee039166de6cd74993b9624e81930 /* icalderivedparameter.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = icalderivedparameter.h; path = ../../../addons/ofxICalendar/libs/libical/include/libical/icalderivedparameter.h; sourceTree = SOURCE_ROOT; };
+		2198303e8da3fe278359ad6e7268ec76 /* icalclassify.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = icalclassify.h; path = ../../../addons/ofxICalendar/libs/libical/include/libical/icalclassify.h; sourceTree = SOURCE_ROOT; };
+		21df845370cc6696a4f24d99c2d85c97 /* icalvalue.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = icalvalue.h; path = ../../../addons/ofxICalendar/libs/libical/include/libical/icalvalue.h; sourceTree = SOURCE_ROOT; };
+		228e736bcf382834884b0e11ff742eae /* Interval.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = Interval.h; path = ../../../addons/ofxTime/libs/ofxTime/include/ofx/Time/Interval.h; sourceTree = SOURCE_ROOT; };
+		311da76a257ef106ddf34547b955895e /* icalfileset.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = icalfileset.h; path = ../../../addons/ofxICalendar/libs/libical/include/libical/icalfileset.h; sourceTree = SOURCE_ROOT; };
+		341a56920292bd323acbea793040fe2d /* icalduration.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = icalduration.h; path = ../../../addons/ofxICalendar/libs/libical/include/libical/icalduration.h; sourceTree = SOURCE_ROOT; };
+		3a8d2abeb5ba046fee7da4dfe3b4ef9c /* icalspanlist.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = icalspanlist.h; path = ../../../addons/ofxICalendar/libs/libical/include/libical/icalspanlist.h; sourceTree = SOURCE_ROOT; };
+		3d23ccea51234eb725bfa6521e9a9b14 /* icaldirsetimpl.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = icaldirsetimpl.h; path = ../../../addons/ofxICalendar/libs/libical/include/libical/icaldirsetimpl.h; sourceTree = SOURCE_ROOT; };
+		423556cff88844167363d4701fa58d36 /* icalderivedvalue.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = icalderivedvalue.h; path = ../../../addons/ofxICalendar/libs/libical/include/libical/icalderivedvalue.h; sourceTree = SOURCE_ROOT; };
+		42c858fdda7a33882a7541c573fa6284 /* icalcomponent.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = icalcomponent.h; path = ../../../addons/ofxICalendar/libs/libical/include/libical/icalcomponent.h; sourceTree = SOURCE_ROOT; };
+		434412657a5e2925861f512dc9d5b262 /* icalss.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = icalss.h; path = ../../../addons/ofxICalendar/libs/libical/include/libical/icalss.h; sourceTree = SOURCE_ROOT; };
+		43e4726eb9767fe9e2e5a09afb5b3333 /* ical.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ical.h; path = ../../../addons/ofxICalendar/libs/libical/include/ical.h; sourceTree = SOURCE_ROOT; };
+		44ff7f4131bdb1710cf68aa41f5fe5ff /* Utils.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = Utils.cpp; path = ../../../addons/ofxTime/libs/ofxTime/src/Utils.cpp; sourceTree = SOURCE_ROOT; };
+		491e46e314ae2929a0fa5fe2f3202292 /* Utils.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = Utils.h; path = ../../../addons/ofxTime/libs/ofxTime/include/ofx/Time/Utils.h; sourceTree = SOURCE_ROOT; };
+		49443036bfb02cd008a1f6490c495c4b /* vcaltmp.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = vcaltmp.h; path = ../../../addons/ofxICalendar/libs/libical/include/libical/vcaltmp.h; sourceTree = SOURCE_ROOT; };
+		4d0d70c6f40de315208689c59ef78d43 /* icalvcal.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = icalvcal.h; path = ../../../addons/ofxICalendar/libs/libical/include/libical/icalvcal.h; sourceTree = SOURCE_ROOT; };
+		50eb6f1393afea4ea9a8059dec415b94 /* ical.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ical.h; path = ../../../addons/ofxICalendar/libs/libical/include/libical/ical.h; sourceTree = SOURCE_ROOT; };
+		59759c840ba5d6791bd35f58fa81fb3a /* icalset.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = icalset.h; path = ../../../addons/ofxICalendar/libs/libical/include/libical/icalset.h; sourceTree = SOURCE_ROOT; };
+		5bc920e422ab62e1fd6161687f611214 /* icaltz-util.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = "icaltz-util.h"; path = "../../../addons/ofxICalendar/libs/libical/include/libical/icaltz-util.h"; sourceTree = SOURCE_ROOT; };
+		5ffe4ec855f125dbf19f0df7812c9ad7 /* icalparameter_cxx.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = icalparameter_cxx.h; path = ../../../addons/ofxICalendar/libs/libical/include/libical/icalparameter_cxx.h; sourceTree = SOURCE_ROOT; };
+		61349a91540dbacdde8b5c7f572ba25b /* icalparser.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = icalparser.h; path = ../../../addons/ofxICalendar/libs/libical/include/libical/icalparser.h; sourceTree = SOURCE_ROOT; };
+		621ac4fe3a2786dcc0a55ba7f70a2c2e /* icaltypes.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = icaltypes.h; path = ../../../addons/ofxICalendar/libs/libical/include/libical/icaltypes.h; sourceTree = SOURCE_ROOT; };
+		6c9fe65bcba3085bf11df1f3814eb43c /* icalcalendar.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = icalcalendar.h; path = ../../../addons/ofxICalendar/libs/libical/include/libical/icalcalendar.h; sourceTree = SOURCE_ROOT; };
+		736931ec9c81b59b592d95219ec896c8 /* icalparameter.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = icalparameter.h; path = ../../../addons/ofxICalendar/libs/libical/include/libical/icalparameter.h; sourceTree = SOURCE_ROOT; };
+		808f104900dc4abf7c9a283ce9c19f73 /* ICalendarEventInstance.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ICalendarEventInstance.cpp; path = ../../../addons/ofxICalendar/libs/ofxICalendar/src/ICalendarEventInstance.cpp; sourceTree = SOURCE_ROOT; };
+		81f2f589d6fa418817dbb1a4f0e13cb0 /* ICalendarUtils.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ICalendarUtils.cpp; path = ../../../addons/ofxICalendar/libs/ofxICalendar/src/ICalendarUtils.cpp; sourceTree = SOURCE_ROOT; };
+		84d6e43c1f203796910c500709f26966 /* icaldirset.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = icaldirset.h; path = ../../../addons/ofxICalendar/libs/libical/include/libical/icaldirset.h; sourceTree = SOURCE_ROOT; };
+		84f6287fa54b66c746947875f6690182 /* ofApp.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofApp.h; path = src/ofApp.h; sourceTree = SOURCE_ROOT; };
+		9650fa9bdd3837afcedaaa9df126211e /* icalssyacc.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = icalssyacc.h; path = ../../../addons/ofxICalendar/libs/libical/include/libical/icalssyacc.h; sourceTree = SOURCE_ROOT; };
+		96ce09e743ec1c97161ce790c039bf2e /* Interval.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = Interval.cpp; path = ../../../addons/ofxTime/libs/ofxTime/src/Interval.cpp; sourceTree = SOURCE_ROOT; };
+		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
+		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
+		E45BE9710E8CC7DD009D7055 /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = /System/Library/Frameworks/AGL.framework; sourceTree = "<absolute>"; };
+		E45BE9720E8CC7DD009D7055 /* ApplicationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ApplicationServices.framework; path = /System/Library/Frameworks/ApplicationServices.framework; sourceTree = "<absolute>"; };
+		E45BE9730E8CC7DD009D7055 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = /System/Library/Frameworks/AudioToolbox.framework; sourceTree = "<absolute>"; };
+		E45BE9740E8CC7DD009D7055 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
+		E45BE9750E8CC7DD009D7055 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = /System/Library/Frameworks/CoreAudio.framework; sourceTree = "<absolute>"; };
+		E45BE9760E8CC7DD009D7055 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = /System/Library/Frameworks/CoreFoundation.framework; sourceTree = "<absolute>"; };
+		E45BE9770E8CC7DD009D7055 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = /System/Library/Frameworks/CoreServices.framework; sourceTree = "<absolute>"; };
+		E45BE9790E8CC7DD009D7055 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = /System/Library/Frameworks/OpenGL.framework; sourceTree = "<absolute>"; };
+		E45BE97A0E8CC7DD009D7055 /* QuickTime.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickTime.framework; path = /System/Library/Frameworks/QuickTime.framework; sourceTree = "<absolute>"; };
+		E4B69B5B0A3A1756003C02F2 /* exampleDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = exampleDebug.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E4B69E1D0A3A1BDC003C02F2 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = src/main.cpp; sourceTree = SOURCE_ROOT; };
+		E4B6FCAD0C3E899E008CF71C /* openFrameworks-Info.plist */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.plist.xml; path = "openFrameworks-Info.plist"; sourceTree = "<group>"; };
+		E4C2424410CC5A17004149E2 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
+		E4C2424510CC5A17004149E2 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
+		E4C2424610CC5A17004149E2 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = /System/Library/Frameworks/IOKit.framework; sourceTree = "<absolute>"; };
+		E4EB691F138AFCF100A09F29 /* CoreOF.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = CoreOF.xcconfig; path = ../../../libs/openFrameworksCompiled/project/osx/CoreOF.xcconfig; sourceTree = SOURCE_ROOT; };
+		E4EB6923138AFD0F00A09F29 /* Project.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Project.xcconfig; sourceTree = "<group>"; };
+		E7E077E415D3B63C0020DFD4 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = /System/Library/Frameworks/CoreVideo.framework; sourceTree = "<absolute>"; };
+		E7E077E715D3B6510020DFD4 /* QTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QTKit.framework; path = /System/Library/Frameworks/QTKit.framework; sourceTree = "<absolute>"; };
+		E7F985F515E0DE99003869B5 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = /System/Library/Frameworks/Accelerate.framework; sourceTree = "<absolute>"; };
+		FD08B97F18568A3400A4A757 /* CalendarWidget.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CalendarWidget.cpp; sourceTree = "<group>"; };
+		FD08B98018568A3400A4A757 /* CalendarWidget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarWidget.h; sourceTree = "<group>"; };
+		FD94B9B718516F1A00FDFC0B /* ICalendar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ICalendar.h; path = ../libs/ofxICalendar/include/ofx/Time/ICalendar.h; sourceTree = "<group>"; };
+		FD94B9B818516F1A00FDFC0B /* ICalendarEvent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ICalendarEvent.h; path = ../libs/ofxICalendar/include/ofx/Time/ICalendarEvent.h; sourceTree = "<group>"; };
+		FD94B9B918516F1A00FDFC0B /* ICalendarEventInstance.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ICalendarEventInstance.h; path = ../libs/ofxICalendar/include/ofx/Time/ICalendarEventInstance.h; sourceTree = "<group>"; };
+		FD94B9BA18516F1A00FDFC0B /* ICalendarUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ICalendarUtils.h; path = ../libs/ofxICalendar/include/ofx/Time/ICalendarUtils.h; sourceTree = "<group>"; };
+		FD94B9BB18516F1A00FDFC0B /* ICalendarWatcher.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ICalendarWatcher.h; path = ../libs/ofxICalendar/include/ofx/Time/ICalendarWatcher.h; sourceTree = "<group>"; };
+		FD94B9BC18516F1A00FDFC0B /* ICalendarWatcherEvents.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ICalendarWatcherEvents.h; path = ../libs/ofxICalendar/include/ofx/Time/ICalendarWatcherEvents.h; sourceTree = "<group>"; };
+		FDD56F75186029ED003E4887 /* ICalendarInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ICalendarInterface.h; path = ../libs/ofxICalendar/include/ofx/Time/ICalendarInterface.h; sourceTree = "<group>"; };
+		FDDEB86D185792330063D2AD /* Period.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Period.h; path = ../../ofxTime/libs/ofxTime/include/ofx/Time/Period.h; sourceTree = "<group>"; };
+		FDDEB86E185792440063D2AD /* Period.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Period.cpp; path = ../../ofxTime/libs/ofxTime/src/Period.cpp; sourceTree = "<group>"; };
+		a2971775bfcf3ead4b4467549d964a44 /* ICalendar.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ICalendar.cpp; path = ../../../addons/ofxICalendar/libs/ofxICalendar/src/ICalendar.cpp; sourceTree = SOURCE_ROOT; };
+		b143189b93b2068b2a34958e263ed251 /* icalrecur.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = icalrecur.h; path = ../../../addons/ofxICalendar/libs/libical/include/libical/icalrecur.h; sourceTree = SOURCE_ROOT; };
+		b193260b2ee2b0465c9f7b36210c87ad /* icalfilesetimpl.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = icalfilesetimpl.h; path = ../../../addons/ofxICalendar/libs/libical/include/libical/icalfilesetimpl.h; sourceTree = SOURCE_ROOT; };
+		b4bfdda89183b8c8f566fde07f750843 /* icalcluster.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = icalcluster.h; path = ../../../addons/ofxICalendar/libs/libical/include/libical/icalcluster.h; sourceTree = SOURCE_ROOT; };
+		b52832431374ad1739e29cae96a9535c /* vcc.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = vcc.h; path = ../../../addons/ofxICalendar/libs/libical/include/libical/vcc.h; sourceTree = SOURCE_ROOT; };
+		bf3c2d489b482a1e1ce2c4c84e5a3fc4 /* port.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = port.h; path = ../../../addons/ofxICalendar/libs/libical/include/libical/port.h; sourceTree = SOURCE_ROOT; };
+		c01b4fdd9fda7247d3f2506f371929d3 /* ICalendarEvents.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ICalendarEvents.cpp; path = ../../../addons/ofxICalendar/libs/ofxICalendar/src/ICalendarEvents.cpp; sourceTree = SOURCE_ROOT; };
+		c701acdbffb295f1b2e101d4aa2c6188 /* icalproperty_cxx.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = icalproperty_cxx.h; path = ../../../addons/ofxICalendar/libs/libical/include/libical/icalproperty_cxx.h; sourceTree = SOURCE_ROOT; };
+		cc49568cd1693c51c09c072adc3a9311 /* pvl.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = pvl.h; path = ../../../addons/ofxICalendar/libs/libical/include/libical/pvl.h; sourceTree = SOURCE_ROOT; };
+		daa22e1c16df6c4de28827eeda5dc575 /* icalvalue_cxx.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = icalvalue_cxx.h; path = ../../../addons/ofxICalendar/libs/libical/include/libical/icalvalue_cxx.h; sourceTree = SOURCE_ROOT; };
+		ddbf7e6938bfbe6e88c8014edd87c57a /* icalderivedproperty.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = icalderivedproperty.h; path = ../../../addons/ofxICalendar/libs/libical/include/libical/icalderivedproperty.h; sourceTree = SOURCE_ROOT; };
+		df1a72d0bf688020eeb9b95dbfac6756 /* icalperiod.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = icalperiod.h; path = ../../../addons/ofxICalendar/libs/libical/include/libical/icalperiod.h; sourceTree = SOURCE_ROOT; };
+		e3de25765091ef5fabcd3003fd1637b6 /* icalrestriction.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = icalrestriction.h; path = ../../../addons/ofxICalendar/libs/libical/include/libical/icalrestriction.h; sourceTree = SOURCE_ROOT; };
+		e4225a306bdf7a85c4a66a1bfbcd32e6 /* vcomponent.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = vcomponent.h; path = ../../../addons/ofxICalendar/libs/libical/include/libical/vcomponent.h; sourceTree = SOURCE_ROOT; };
+		e67cd8e9319dacae7655f69fe0e13867 /* sspm.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = sspm.h; path = ../../../addons/ofxICalendar/libs/libical/include/libical/sspm.h; sourceTree = SOURCE_ROOT; };
+		eacc00c7106eb850190af5b31ba0f705 /* icalenums.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = icalenums.h; path = ../../../addons/ofxICalendar/libs/libical/include/libical/icalenums.h; sourceTree = SOURCE_ROOT; };
+		f110c7e8698e0d90a9258b9635611d42 /* ofxICalendar.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxICalendar.h; path = ../../../addons/ofxICalendar/src/ofxICalendar.h; sourceTree = SOURCE_ROOT; };
+		f11be7f66387b2e043c57fb2a01e0f74 /* icaltimezone.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = icaltimezone.h; path = ../../../addons/ofxICalendar/libs/libical/include/libical/icaltimezone.h; sourceTree = SOURCE_ROOT; };
+		f528484dd257153ea35f48f997e8f89a /* icallangbind.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = icallangbind.h; path = ../../../addons/ofxICalendar/libs/libical/include/libical/icallangbind.h; sourceTree = SOURCE_ROOT; };
+		f82d78602f07f20ca3913b16acea132f /* vobject.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = vobject.h; path = ../../../addons/ofxICalendar/libs/libical/include/libical/vobject.h; sourceTree = SOURCE_ROOT; };
+		f8ad8c21b289d50613784014c97498c1 /* icalattach.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = icalattach.h; path = ../../../addons/ofxICalendar/libs/libical/include/libical/icalattach.h; sourceTree = SOURCE_ROOT; };
+		feeeeece3c65ca4f0b66606ed1fd80c9 /* ofxTime.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxTime.h; path = ../../../addons/ofxTime/src/ofxTime.h; sourceTree = SOURCE_ROOT; };
+		ff061228479252417368cc045b402a34 /* icaltime.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = icaltime.h; path = ../../../addons/ofxICalendar/libs/libical/include/libical/icaltime.h; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E4B69B590A3A1756003C02F2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E7F985F815E0DEA3003869B5 /* Accelerate.framework in Frameworks */,
+				E7E077E815D3B6510020DFD4 /* QTKit.framework in Frameworks */,
+				E4EB6799138ADC1D00A09F29 /* GLUT.framework in Frameworks */,
+				E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */,
+				E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */,
+				E45BE97C0E8CC7DD009D7055 /* ApplicationServices.framework in Frameworks */,
+				E45BE97D0E8CC7DD009D7055 /* AudioToolbox.framework in Frameworks */,
+				E45BE97E0E8CC7DD009D7055 /* Carbon.framework in Frameworks */,
+				E45BE97F0E8CC7DD009D7055 /* CoreAudio.framework in Frameworks */,
+				E45BE9800E8CC7DD009D7055 /* CoreFoundation.framework in Frameworks */,
+				E45BE9810E8CC7DD009D7055 /* CoreServices.framework in Frameworks */,
+				E45BE9830E8CC7DD009D7055 /* OpenGL.framework in Frameworks */,
+				E45BE9840E8CC7DD009D7055 /* QuickTime.framework in Frameworks */,
+				E4C2424710CC5A17004149E2 /* AppKit.framework in Frameworks */,
+				E4C2424810CC5A17004149E2 /* Cocoa.framework in Frameworks */,
+				E4C2424910CC5A17004149E2 /* IOKit.framework in Frameworks */,
+				E7E077E515D3B63C0020DFD4 /* CoreVideo.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		05ad41a21f8a492c4a0ad67a42378ccd /* include */ = {
+			isa = PBXGroup;
+			children = (
+				28d3c5052c346d0bf45bbf6cf58bb614 /* ofx */,
+			);
+			name = include;
+			sourceTree = "<group>";
+		};
+		14eecc5f7664c2d974c58efee6cf4bd1 /* Time */ = {
+			isa = PBXGroup;
+			children = (
+				FDD56F75186029ED003E4887 /* ICalendarInterface.h */,
+				FD94B9B718516F1A00FDFC0B /* ICalendar.h */,
+				FD94B9B818516F1A00FDFC0B /* ICalendarEvent.h */,
+				FD94B9B918516F1A00FDFC0B /* ICalendarEventInstance.h */,
+				FD94B9BA18516F1A00FDFC0B /* ICalendarUtils.h */,
+				FD94B9BB18516F1A00FDFC0B /* ICalendarWatcher.h */,
+				FD94B9BC18516F1A00FDFC0B /* ICalendarWatcherEvents.h */,
+			);
+			name = Time;
+			sourceTree = "<group>";
+		};
+		18de1ab073c1446d2ae3e42bb2e40c16 /* libical */ = {
+			isa = PBXGroup;
+			children = (
+				3c7a040865f8f65b370c78559ecd014d /* include */,
+			);
+			name = libical;
+			sourceTree = "<group>";
+		};
+		27809381e42365a01130001a2dcd4d07 /* libical */ = {
+			isa = PBXGroup;
+			children = (
+				50eb6f1393afea4ea9a8059dec415b94 /* ical.h */,
+				0cd68f5c93397ee31799e2a0c7a46437 /* icalarray.h */,
+				f8ad8c21b289d50613784014c97498c1 /* icalattach.h */,
+				6c9fe65bcba3085bf11df1f3814eb43c /* icalcalendar.h */,
+				2198303e8da3fe278359ad6e7268ec76 /* icalclassify.h */,
+				b4bfdda89183b8c8f566fde07f750843 /* icalcluster.h */,
+				42c858fdda7a33882a7541c573fa6284 /* icalcomponent.h */,
+				1c8ee039166de6cd74993b9624e81930 /* icalderivedparameter.h */,
+				ddbf7e6938bfbe6e88c8014edd87c57a /* icalderivedproperty.h */,
+				423556cff88844167363d4701fa58d36 /* icalderivedvalue.h */,
+				84d6e43c1f203796910c500709f26966 /* icaldirset.h */,
+				3d23ccea51234eb725bfa6521e9a9b14 /* icaldirsetimpl.h */,
+				341a56920292bd323acbea793040fe2d /* icalduration.h */,
+				eacc00c7106eb850190af5b31ba0f705 /* icalenums.h */,
+				0107ed8cb016fb5b2b3050afc3a0269a /* icalerror.h */,
+				311da76a257ef106ddf34547b955895e /* icalfileset.h */,
+				b193260b2ee2b0465c9f7b36210c87ad /* icalfilesetimpl.h */,
+				037f09806edca641632f0483ff8e926e /* icalgauge.h */,
+				18c663dd32bfe9540ec7a67b8251fef5 /* icalgaugeimpl.h */,
+				f528484dd257153ea35f48f997e8f89a /* icallangbind.h */,
+				065ac877e89d78c6aaa31c9f1b42a48e /* icalmemory.h */,
+				04f62d09a54f038a87340ff91be7a9f8 /* icalmessage.h */,
+				130a49032b21b428d7acd7fcdb1b6993 /* icalmime.h */,
+				736931ec9c81b59b592d95219ec896c8 /* icalparameter.h */,
+				5ffe4ec855f125dbf19f0df7812c9ad7 /* icalparameter_cxx.h */,
+				61349a91540dbacdde8b5c7f572ba25b /* icalparser.h */,
+				df1a72d0bf688020eeb9b95dbfac6756 /* icalperiod.h */,
+				14310c1ed3e9617fa4bc9d5568dc25a0 /* icalproperty.h */,
+				c701acdbffb295f1b2e101d4aa2c6188 /* icalproperty_cxx.h */,
+				b143189b93b2068b2a34958e263ed251 /* icalrecur.h */,
+				e3de25765091ef5fabcd3003fd1637b6 /* icalrestriction.h */,
+				59759c840ba5d6791bd35f58fa81fb3a /* icalset.h */,
+				3a8d2abeb5ba046fee7da4dfe3b4ef9c /* icalspanlist.h */,
+				434412657a5e2925861f512dc9d5b262 /* icalss.h */,
+				9650fa9bdd3837afcedaaa9df126211e /* icalssyacc.h */,
+				ff061228479252417368cc045b402a34 /* icaltime.h */,
+				f11be7f66387b2e043c57fb2a01e0f74 /* icaltimezone.h */,
+				621ac4fe3a2786dcc0a55ba7f70a2c2e /* icaltypes.h */,
+				5bc920e422ab62e1fd6161687f611214 /* icaltz-util.h */,
+				21df845370cc6696a4f24d99c2d85c97 /* icalvalue.h */,
+				daa22e1c16df6c4de28827eeda5dc575 /* icalvalue_cxx.h */,
+				4d0d70c6f40de315208689c59ef78d43 /* icalvcal.h */,
+				0dc0d147f7c0205143ca91fc3465aebf /* icptrholder.h */,
+				bf3c2d489b482a1e1ce2c4c84e5a3fc4 /* port.h */,
+				cc49568cd1693c51c09c072adc3a9311 /* pvl.h */,
+				e67cd8e9319dacae7655f69fe0e13867 /* sspm.h */,
+				49443036bfb02cd008a1f6490c495c4b /* vcaltmp.h */,
+				b52832431374ad1739e29cae96a9535c /* vcc.h */,
+				e4225a306bdf7a85c4a66a1bfbcd32e6 /* vcomponent.h */,
+				f82d78602f07f20ca3913b16acea132f /* vobject.h */,
+			);
+			name = libical;
+			sourceTree = "<group>";
+		};
+		28d3c5052c346d0bf45bbf6cf58bb614 /* ofx */ = {
+			isa = PBXGroup;
+			children = (
+				cef17e9e6c28478748b8d76cdab358ae /* Time */,
+			);
+			name = ofx;
+			sourceTree = "<group>";
+		};
+		3c7a040865f8f65b370c78559ecd014d /* include */ = {
+			isa = PBXGroup;
+			children = (
+				43e4726eb9767fe9e2e5a09afb5b3333 /* ical.h */,
+				27809381e42365a01130001a2dcd4d07 /* libical */,
+			);
+			name = include;
+			sourceTree = "<group>";
+		};
+		5898d0a0989b0e33ae378c0dc8d8a10d /* ofxTime */ = {
+			isa = PBXGroup;
+			children = (
+				05ad41a21f8a492c4a0ad67a42378ccd /* include */,
+				f0c6e3b6ee7399b21c2dc328027e69de /* src */,
+			);
+			name = ofxTime;
+			sourceTree = "<group>";
+		};
+		5cd6cdebb90323b7b4dc12d14bc79dd4 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				b89bfcaff56a7394250b7482d7f1f72f /* ofx */,
+			);
+			name = include;
+			sourceTree = "<group>";
+		};
+		673581660f24944f4090a360cd4cbbfb /* src */ = {
+			isa = PBXGroup;
+			children = (
+				f110c7e8698e0d90a9258b9635611d42 /* ofxICalendar.h */,
+			);
+			name = src;
+			sourceTree = "<group>";
+		};
+		BB4B014C10F69532006C3DED /* addons */ = {
+			isa = PBXGroup;
+			children = (
+				c86c544318cac398f919ead7ad823c9b /* ofxICalendar */,
+				e580da17dac1e2210aa6bb6afbc77a9b /* ofxTime */,
+			);
+			name = addons;
+			sourceTree = "<group>";
+		};
+		BBAB23C913894ECA00AA2426 /* system frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E7F985F515E0DE99003869B5 /* Accelerate.framework */,
+				E4C2424410CC5A17004149E2 /* AppKit.framework */,
+				E4C2424510CC5A17004149E2 /* Cocoa.framework */,
+				E4C2424610CC5A17004149E2 /* IOKit.framework */,
+				E45BE9710E8CC7DD009D7055 /* AGL.framework */,
+				E45BE9720E8CC7DD009D7055 /* ApplicationServices.framework */,
+				E45BE9730E8CC7DD009D7055 /* AudioToolbox.framework */,
+				E45BE9740E8CC7DD009D7055 /* Carbon.framework */,
+				E45BE9750E8CC7DD009D7055 /* CoreAudio.framework */,
+				E45BE9760E8CC7DD009D7055 /* CoreFoundation.framework */,
+				E45BE9770E8CC7DD009D7055 /* CoreServices.framework */,
+				E45BE9790E8CC7DD009D7055 /* OpenGL.framework */,
+				E45BE97A0E8CC7DD009D7055 /* QuickTime.framework */,
+				E7E077E415D3B63C0020DFD4 /* CoreVideo.framework */,
+				E7E077E715D3B6510020DFD4 /* QTKit.framework */,
+			);
+			name = "system frameworks";
+			sourceTree = "<group>";
+		};
+		BBAB23CA13894EDB00AA2426 /* 3rd party frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BBAB23BE13894E4700AA2426 /* GLUT.framework */,
+			);
+			name = "3rd party frameworks";
+			sourceTree = "<group>";
+		};
+		E4328144138ABC890047C5CB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E4328148138ABC890047C5CB /* openFrameworksDebug.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E45BE5980E8CC70C009D7055 /* frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BBAB23CA13894EDB00AA2426 /* 3rd party frameworks */,
+				BBAB23C913894ECA00AA2426 /* system frameworks */,
+			);
+			name = frameworks;
+			sourceTree = "<group>";
+		};
+		E4B69B4A0A3A1720003C02F2 = {
+			isa = PBXGroup;
+			children = (
+				E4B6FCAD0C3E899E008CF71C /* openFrameworks-Info.plist */,
+				E4EB6923138AFD0F00A09F29 /* Project.xcconfig */,
+				E4B69E1C0A3A1BDC003C02F2 /* src */,
+				E4EEC9E9138DF44700A80321 /* openFrameworks */,
+				BB4B014C10F69532006C3DED /* addons */,
+				E45BE5980E8CC70C009D7055 /* frameworks */,
+				E4B69B5B0A3A1756003C02F2 /* exampleDebug.app */,
+			);
+			sourceTree = "<group>";
+		};
+		E4B69E1C0A3A1BDC003C02F2 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				E4B69E1D0A3A1BDC003C02F2 /* main.cpp */,
+				19c22cd05d10f78b32ff80c6be3a9385 /* ofApp.cpp */,
+				84f6287fa54b66c746947875f6690182 /* ofApp.h */,
+				FD08B97F18568A3400A4A757 /* CalendarWidget.cpp */,
+				FD08B98018568A3400A4A757 /* CalendarWidget.h */,
+			);
+			path = src;
+			sourceTree = SOURCE_ROOT;
+		};
+		E4EEC9E9138DF44700A80321 /* openFrameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E4EB691F138AFCF100A09F29 /* CoreOF.xcconfig */,
+				E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */,
+			);
+			name = openFrameworks;
+			sourceTree = "<group>";
+		};
+		b0f7e91046442c7308f6331f4e934f97 /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				18de1ab073c1446d2ae3e42bb2e40c16 /* libical */,
+				bf0a50843f862c8af10e76fc47e08ba3 /* ofxICalendar */,
+			);
+			name = libs;
+			sourceTree = "<group>";
+		};
+		b89bfcaff56a7394250b7482d7f1f72f /* ofx */ = {
+			isa = PBXGroup;
+			children = (
+				14eecc5f7664c2d974c58efee6cf4bd1 /* Time */,
+			);
+			name = ofx;
+			sourceTree = "<group>";
+		};
+		bf0a50843f862c8af10e76fc47e08ba3 /* ofxICalendar */ = {
+			isa = PBXGroup;
+			children = (
+				5cd6cdebb90323b7b4dc12d14bc79dd4 /* include */,
+				cfe9492a7f2054d3e885308adc758703 /* src */,
+			);
+			name = ofxICalendar;
+			sourceTree = "<group>";
+		};
+		c86c544318cac398f919ead7ad823c9b /* ofxICalendar */ = {
+			isa = PBXGroup;
+			children = (
+				673581660f24944f4090a360cd4cbbfb /* src */,
+				b0f7e91046442c7308f6331f4e934f97 /* libs */,
+			);
+			name = ofxICalendar;
+			sourceTree = "<group>";
+		};
+		cef17e9e6c28478748b8d76cdab358ae /* Time */ = {
+			isa = PBXGroup;
+			children = (
+				FDDEB86D185792330063D2AD /* Period.h */,
+				228e736bcf382834884b0e11ff742eae /* Interval.h */,
+				491e46e314ae2929a0fa5fe2f3202292 /* Utils.h */,
+			);
+			name = Time;
+			sourceTree = "<group>";
+		};
+		cfe9492a7f2054d3e885308adc758703 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				a2971775bfcf3ead4b4467549d964a44 /* ICalendar.cpp */,
+				059fb29fa1a0254e953d64096eb950da /* ICalendarEvent.cpp */,
+				808f104900dc4abf7c9a283ce9c19f73 /* ICalendarEventInstance.cpp */,
+				c01b4fdd9fda7247d3f2506f371929d3 /* ICalendarEvents.cpp */,
+				81f2f589d6fa418817dbb1a4f0e13cb0 /* ICalendarUtils.cpp */,
+				0860ff1760186115e6caafb1ffa537b4 /* ICalendarWatcher.cpp */,
+			);
+			name = src;
+			sourceTree = "<group>";
+		};
+		e013b1666a0cb6749dc18982ea3d1f27 /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				5898d0a0989b0e33ae378c0dc8d8a10d /* ofxTime */,
+			);
+			name = libs;
+			sourceTree = "<group>";
+		};
+		e580da17dac1e2210aa6bb6afbc77a9b /* ofxTime */ = {
+			isa = PBXGroup;
+			children = (
+				f54275bc9edef24a0d844d151ed528bd /* src */,
+				e013b1666a0cb6749dc18982ea3d1f27 /* libs */,
+			);
+			name = ofxTime;
+			sourceTree = "<group>";
+		};
+		f0c6e3b6ee7399b21c2dc328027e69de /* src */ = {
+			isa = PBXGroup;
+			children = (
+				FDDEB86E185792440063D2AD /* Period.cpp */,
+				96ce09e743ec1c97161ce790c039bf2e /* Interval.cpp */,
+				44ff7f4131bdb1710cf68aa41f5fe5ff /* Utils.cpp */,
+			);
+			name = src;
+			sourceTree = "<group>";
+		};
+		f54275bc9edef24a0d844d151ed528bd /* src */ = {
+			isa = PBXGroup;
+			children = (
+				feeeeece3c65ca4f0b66606ed1fd80c9 /* ofxTime.h */,
+			);
+			name = src;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E4B69B5A0A3A1756003C02F2 /* example */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E4B69B5F0A3A1757003C02F2 /* Build configuration list for PBXNativeTarget "example" */;
+			buildPhases = (
+				E4B69B580A3A1756003C02F2 /* Sources */,
+				E4B69B590A3A1756003C02F2 /* Frameworks */,
+				E4B6FFFD0C3F9AB9008CF71C /* ShellScript */,
+				E4C2427710CC5ABF004149E2 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E4EEB9AC138B136A00A80321 /* PBXTargetDependency */,
+			);
+			name = example;
+			productName = myOFApp;
+			productReference = E4B69B5B0A3A1756003C02F2 /* exampleDebug.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E4B69B4C0A3A1720003C02F2 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0460;
+			};
+			buildConfigurationList = E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "example" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+			);
+			mainGroup = E4B69B4A0A3A1720003C02F2;
+			productRefGroup = E4B69B4A0A3A1720003C02F2;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = E4328144138ABC890047C5CB /* Products */;
+					ProjectRef = E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				E4B69B5A0A3A1756003C02F2 /* example */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		E4328148138ABC890047C5CB /* openFrameworksDebug.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = openFrameworksDebug.a;
+			remoteRef = E4328147138ABC890047C5CB /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		E4B6FFFD0C3F9AB9008CF71C /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cp -f ../../../libs/fmodex/lib/osx/libfmodex.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/libfmodex.dylib\"; install_name_tool -change ./libfmodex.dylib @executable_path/libfmodex.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/$PRODUCT_NAME\";\nmkdir -p \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/Resources/\"\ncp -f \"$ICON_FILE\" \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/Resources/\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E4B69B580A3A1756003C02F2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
+				FD08B98118568A3400A4A757 /* CalendarWidget.cpp in Sources */,
+				FDDEB86F185792440063D2AD /* Period.cpp in Sources */,
+				4b14cedcc7195a4d1f8e28b4f9635a89 /* ofApp.cpp in Sources */,
+				7570bc55ef560d2a8837979697062ba9 /* ICalendar.cpp in Sources */,
+				99a2c610b105a9d6fca5256be68e775b /* ICalendarEvent.cpp in Sources */,
+				4c4dc48d8eda51d39a2f3fefa945e80c /* ICalendarEventInstance.cpp in Sources */,
+				57ccb82e829a8c5006d6ba4dfb76a82d /* ICalendarEvents.cpp in Sources */,
+				67d48576d3e2a3a04befb5d82602c951 /* ICalendarUtils.cpp in Sources */,
+				7a8f528177bfbe34b9d4573e203871c0 /* ICalendarWatcher.cpp in Sources */,
+				ee13e17f76edda9f03b9bac10729e4c8 /* Interval.cpp in Sources */,
+				532af6d7e3cb5ae24d160140f3ad5d7c /* Utils.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E4EEB9AC138B136A00A80321 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = openFrameworks;
+			targetProxy = E4EEB9AB138B136A00A80321 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		E4B69B4E0A3A1720003C02F2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E4EB6923138AFD0F00A09F29 /* Project.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(NATIVE_ARCH)";
+				CONFIGURATION_BUILD_DIR = "$(SRCROOT)/bin/";
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				GCC_AUTO_VECTORIZATION = YES;
+				GCC_ENABLE_SSE3_EXTENSIONS = YES;
+				GCC_ENABLE_SUPPLEMENTAL_SSE3_INSTRUCTIONS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = YES;
+				GCC_WARN_ABOUT_INVALID_OFFSETOF_MACRO = NO;
+				GCC_WARN_ALLOW_INCOMPLETE_PROTOCOL = NO;
+				GCC_WARN_UNINITIALIZED_AUTOS = NO;
+				GCC_WARN_UNUSED_VALUE = NO;
+				GCC_WARN_UNUSED_VARIABLE = NO;
+				HEADER_SEARCH_PATHS = (
+					"$(OF_CORE_HEADERS)",
+					src,
+					../../../addons/ofxICalendar/libs,
+					../../../addons/ofxICalendar/libs/libical,
+					../../../addons/ofxICalendar/libs/libical/include,
+					../../../addons/ofxICalendar/libs/libical/include/libical,
+					../../../addons/ofxICalendar/libs/libical/lib,
+					../../../addons/ofxICalendar/libs/libical/lib/osx,
+					../../../addons/ofxICalendar/libs/libical/share,
+					../../../addons/ofxICalendar/libs/libical/share/libical,
+					../../../addons/ofxICalendar/libs/libical/share/libical/zoneinfo,
+					../../../addons/ofxICalendar/libs/libical/share/libical/zoneinfo/Africa,
+					../../../addons/ofxICalendar/libs/libical/share/libical/zoneinfo/America,
+					../../../addons/ofxICalendar/libs/libical/share/libical/zoneinfo/America/Argentina,
+					../../../addons/ofxICalendar/libs/libical/share/libical/zoneinfo/America/Indiana,
+					../../../addons/ofxICalendar/libs/libical/share/libical/zoneinfo/America/Kentucky,
+					../../../addons/ofxICalendar/libs/libical/share/libical/zoneinfo/America/North_Dakota,
+					../../../addons/ofxICalendar/libs/libical/share/libical/zoneinfo/Antarctica,
+					../../../addons/ofxICalendar/libs/libical/share/libical/zoneinfo/Arctic,
+					../../../addons/ofxICalendar/libs/libical/share/libical/zoneinfo/Asia,
+					../../../addons/ofxICalendar/libs/libical/share/libical/zoneinfo/Atlantic,
+					../../../addons/ofxICalendar/libs/libical/share/libical/zoneinfo/Australia,
+					../../../addons/ofxICalendar/libs/libical/share/libical/zoneinfo/Europe,
+					../../../addons/ofxICalendar/libs/libical/share/libical/zoneinfo/Indian,
+					../../../addons/ofxICalendar/libs/libical/share/libical/zoneinfo/Pacific,
+					../../../addons/ofxICalendar/libs/ofxICalendar,
+					../../../addons/ofxICalendar/libs/ofxICalendar/include,
+					../../../addons/ofxICalendar/libs/ofxICalendar/include/ofx,
+					../../../addons/ofxICalendar/libs/ofxICalendar/include/ofx/Time,
+					../../../addons/ofxICalendar/libs/ofxICalendar/src,
+					../../../addons/ofxICalendar/src,
+					../../../addons/ofxTime/libs,
+					../../../addons/ofxTime/libs/ofxTime,
+					../../../addons/ofxTime/libs/ofxTime/include,
+					../../../addons/ofxTime/libs/ofxTime/include/ofx,
+					../../../addons/ofxTime/libs/ofxTime/include/ofx/Time,
+					../../../addons/ofxTime/libs/ofxTime/src,
+					../../../addons/ofxTime/src,
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				OTHER_CPLUSPLUSFLAGS = (
+					"-D__MACOSX_CORE__",
+					"-lpthread",
+					"-mtune=native",
+				);
+				OTHER_LDFLAGS = (
+					"$(OF_CORE_LIBS)",
+					../../../addons/ofxICalendar/libs/libical/lib/osx/libical.a,
+					../../../addons/ofxICalendar/libs/libical/lib/osx/libical_cxx.a,
+					../../../addons/ofxICalendar/libs/libical/lib/osx/libicalss.a,
+					../../../addons/ofxICalendar/libs/libical/lib/osx/libicalss_cxx.a,
+					../../../addons/ofxICalendar/libs/libical/lib/osx/libicalvcal.a,
+				);
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		E4B69B4F0A3A1720003C02F2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E4EB6923138AFD0F00A09F29 /* Project.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(NATIVE_ARCH)";
+				CONFIGURATION_BUILD_DIR = "$(SRCROOT)/bin/";
+				COPY_PHASE_STRIP = YES;
+				DEAD_CODE_STRIPPING = YES;
+				GCC_AUTO_VECTORIZATION = YES;
+				GCC_ENABLE_SSE3_EXTENSIONS = YES;
+				GCC_ENABLE_SUPPLEMENTAL_SSE3_INSTRUCTIONS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_UNROLL_LOOPS = YES;
+				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = YES;
+				GCC_WARN_ABOUT_INVALID_OFFSETOF_MACRO = NO;
+				GCC_WARN_ALLOW_INCOMPLETE_PROTOCOL = NO;
+				GCC_WARN_UNINITIALIZED_AUTOS = NO;
+				GCC_WARN_UNUSED_VALUE = NO;
+				GCC_WARN_UNUSED_VARIABLE = NO;
+				HEADER_SEARCH_PATHS = (
+					"$(OF_CORE_HEADERS)",
+					src,
+					../../../addons/ofxICalendar/libs,
+					../../../addons/ofxICalendar/libs/libical,
+					../../../addons/ofxICalendar/libs/libical/include,
+					../../../addons/ofxICalendar/libs/libical/include/libical,
+					../../../addons/ofxICalendar/libs/libical/lib,
+					../../../addons/ofxICalendar/libs/libical/lib/osx,
+					../../../addons/ofxICalendar/libs/libical/share,
+					../../../addons/ofxICalendar/libs/libical/share/libical,
+					../../../addons/ofxICalendar/libs/libical/share/libical/zoneinfo,
+					../../../addons/ofxICalendar/libs/libical/share/libical/zoneinfo/Africa,
+					../../../addons/ofxICalendar/libs/libical/share/libical/zoneinfo/America,
+					../../../addons/ofxICalendar/libs/libical/share/libical/zoneinfo/America/Argentina,
+					../../../addons/ofxICalendar/libs/libical/share/libical/zoneinfo/America/Indiana,
+					../../../addons/ofxICalendar/libs/libical/share/libical/zoneinfo/America/Kentucky,
+					../../../addons/ofxICalendar/libs/libical/share/libical/zoneinfo/America/North_Dakota,
+					../../../addons/ofxICalendar/libs/libical/share/libical/zoneinfo/Antarctica,
+					../../../addons/ofxICalendar/libs/libical/share/libical/zoneinfo/Arctic,
+					../../../addons/ofxICalendar/libs/libical/share/libical/zoneinfo/Asia,
+					../../../addons/ofxICalendar/libs/libical/share/libical/zoneinfo/Atlantic,
+					../../../addons/ofxICalendar/libs/libical/share/libical/zoneinfo/Australia,
+					../../../addons/ofxICalendar/libs/libical/share/libical/zoneinfo/Europe,
+					../../../addons/ofxICalendar/libs/libical/share/libical/zoneinfo/Indian,
+					../../../addons/ofxICalendar/libs/libical/share/libical/zoneinfo/Pacific,
+					../../../addons/ofxICalendar/libs/ofxICalendar,
+					../../../addons/ofxICalendar/libs/ofxICalendar/include,
+					../../../addons/ofxICalendar/libs/ofxICalendar/include/ofx,
+					../../../addons/ofxICalendar/libs/ofxICalendar/include/ofx/Time,
+					../../../addons/ofxICalendar/libs/ofxICalendar/src,
+					../../../addons/ofxICalendar/src,
+					../../../addons/ofxTime/libs,
+					../../../addons/ofxTime/libs/ofxTime,
+					../../../addons/ofxTime/libs/ofxTime/include,
+					../../../addons/ofxTime/libs/ofxTime/include/ofx,
+					../../../addons/ofxTime/libs/ofxTime/include/ofx/Time,
+					../../../addons/ofxTime/libs/ofxTime/src,
+					../../../addons/ofxTime/src,
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				OTHER_CPLUSPLUSFLAGS = (
+					"-D__MACOSX_CORE__",
+					"-lpthread",
+					"-mtune=native",
+				);
+				OTHER_LDFLAGS = (
+					"$(OF_CORE_LIBS)",
+					../../../addons/ofxICalendar/libs/libical/lib/osx/libical.a,
+					../../../addons/ofxICalendar/libs/libical/lib/osx/libical_cxx.a,
+					../../../addons/ofxICalendar/libs/libical/lib/osx/libicalss.a,
+					../../../addons/ofxICalendar/libs/libical/lib/osx/libicalss_cxx.a,
+					../../../addons/ofxICalendar/libs/libical/lib/osx/libicalvcal.a,
+				);
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		E4B69B600A3A1757003C02F2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+				);
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../../../libs/glut/lib/osx\"";
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_MODEL_TUNING = NONE;
+				ICON = "$(ICON_NAME_DEBUG)";
+				ICON_FILE = "$(ICON_FILE_PATH)$(ICON)";
+				INFOPLIST_FILE = "openFrameworks-Info.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_3)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_4)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_5)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_6)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_7)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_8)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_9)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_10)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_11)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_12)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_13)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_14)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_15)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_3)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_7)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_8)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_9)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_10)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_11)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_12)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_13)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_16)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_17)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_18)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_19)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_20)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_21)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_22)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_23)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_24)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_25)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_26)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_27)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_28)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_29)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_30)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_31)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_32)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_33)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_34)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_35)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_36)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_37)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_38)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_39)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_40)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_41)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_42)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_43)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_44)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_45)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_46)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_47)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_48)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_49)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_50)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_51)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_52)",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)Debug";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		E4B69B610A3A1757003C02F2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+				);
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../../../libs/glut/lib/osx\"";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_MODEL_TUNING = NONE;
+				ICON = "$(ICON_NAME_RELEASE)";
+				ICON_FILE = "$(ICON_FILE_PATH)$(ICON)";
+				INFOPLIST_FILE = "openFrameworks-Info.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_3)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_4)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_5)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_6)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_7)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_8)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_9)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_10)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_11)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_12)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_13)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_14)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_15)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_1)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_3)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_7)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_8)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_9)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_10)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_11)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_12)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_13)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_16)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_17)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_18)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_19)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_20)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_21)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_22)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_23)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_24)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_25)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_26)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_27)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_28)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_29)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_30)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_31)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_32)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_33)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_34)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_35)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_36)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_37)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_38)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_39)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_40)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_41)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_42)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_43)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_44)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_45)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_46)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_47)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_48)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_49)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_50)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_51)",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "example" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E4B69B4E0A3A1720003C02F2 /* Debug */,
+				E4B69B4F0A3A1720003C02F2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E4B69B5F0A3A1757003C02F2 /* Build configuration list for PBXNativeTarget "example" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E4B69B600A3A1757003C02F2 /* Debug */,
+				E4B69B610A3A1757003C02F2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E4B69B4C0A3A1720003C02F2 /* Project object */;
+}

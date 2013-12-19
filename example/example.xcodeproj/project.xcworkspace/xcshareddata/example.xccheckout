@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>5EF34FAA-EDC1-4089-9895-849BCC23630B</string>
+	<key>IDESourceControlProjectName</key>
+	<string>example</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>1F2C0AC6-1544-4639-97DB-078F930662B5</key>
+		<string>ssh://github.com/SAIC/ofxCalendar.git</string>
+		<key>42FF3E83-BE6B-4F19-BDAA-F84AABEACC59</key>
+		<string>ssh://github.com/bakercp/openFrameworks.git</string>
+		<key>648CDE71-1F57-49B5-941B-EF4A7828B3CD</key>
+		<string>ssh://github.com/bakercp/ofxTime.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>addons/ofxICalendar/example/example.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>1F2C0AC6-1544-4639-97DB-078F930662B5</key>
+		<string>../../..</string>
+		<key>42FF3E83-BE6B-4F19-BDAA-F84AABEACC59</key>
+		<string>../../../../..</string>
+		<key>648CDE71-1F57-49B5-941B-EF4A7828B3CD</key>
+		<string>../../../../ofxTime</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://github.com/SAIC/ofxCalendar.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>42FF3E83-BE6B-4F19-BDAA-F84AABEACC59</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>1F2C0AC6-1544-4639-97DB-078F930662B5</string>
+			<key>IDESourceControlWCCName</key>
+			<string>ofxICalendar</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>648CDE71-1F57-49B5-941B-EF4A7828B3CD</string>
+			<key>IDESourceControlWCCName</key>
+			<string>ofxTime</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>42FF3E83-BE6B-4F19-BDAA-F84AABEACC59</string>
+			<key>IDESourceControlWCCName</key>
+			<string>openFrameworks</string>
+		</dict>
+	</array>
+</dict>
+</plist>
