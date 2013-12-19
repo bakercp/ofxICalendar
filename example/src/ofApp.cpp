@@ -128,15 +128,18 @@ void ofApp::processInstance(const ICalendarEventInstance& instance)
 
         while (iter != lines.end())
         {
-            std::vector<std::string> tokens = ofSplitString(*iter,"=", true, true);
+            std::vector<std::string> tokens = ofSplitString(*iter, "=", true, true);
 
             if (tokens.size() == 2)
             {
                 if (tokens[0] == "color")
                 {
-                    std::stringstream ss;
-                    ss << tokens[1];
-                    ss >> currentColor;
+                    std::vector<std::string> rgbTokens = ofSplitString(tokens[1], ",", true, true);
+
+                    if (rgbTokens.size())
+                    {
+                        currentColor.set(ofToFloat(rgbTokens[0]), ofToFloat(rgbTokens[1]), ofToFloat(rgbTokens[2]));
+                    }
                 }
                 else if(tokens[0] == "speed")
                 {
