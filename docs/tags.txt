@@ -1,0 +1,716 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
+<tagfile>
+  <compound kind="class">
+    <name>ofx::Time::ICalendar</name>
+    <filename>classofx_1_1_time_1_1_i_calendar.html</filename>
+    <base>ofx::Time::ICalendarInterface</base>
+    <member kind="typedef">
+      <type>std::shared_ptr&lt; ICalendar &gt;</type>
+      <name>SharedPtr</name>
+      <anchorfile>classofx_1_1_time_1_1_i_calendar.html</anchorfile>
+      <anchor>a3069da09daa8a01b925d87eb52e874fe</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="typedef">
+      <type>std::weak_ptr&lt; ICalendar &gt;</type>
+      <name>WeakPtr</name>
+      <anchorfile>classofx_1_1_time_1_1_i_calendar.html</anchorfile>
+      <anchor>a5214b3b701ad264a0f9a4f2efeaf001a</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="typedef">
+      <type>std::vector&lt; ICalendarEvent &gt;</type>
+      <name>Events</name>
+      <anchorfile>classofx_1_1_time_1_1_i_calendar.html</anchorfile>
+      <anchor>ac05f6547bb5a53ef95aba36cd6fc3377</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="typedef">
+      <type>std::vector&lt; ICalendarEventInstance &gt;</type>
+      <name>EventInstances</name>
+      <anchorfile>classofx_1_1_time_1_1_i_calendar.html</anchorfile>
+      <anchor>a3f4d5e1d9fbb821ef65505b21f36bc63</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>ICalendar</name>
+      <anchorfile>classofx_1_1_time_1_1_i_calendar.html</anchorfile>
+      <anchor>a18be095528ab4faab8fa2a2d1ab6bc38</anchor>
+      <arglist>(const std::string &amp;uri, unsigned long long autoRefreshInterval=0)</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>ICalendar</name>
+      <anchorfile>classofx_1_1_time_1_1_i_calendar.html</anchorfile>
+      <anchor>a6524de570c4a4db87b07b7bf59de164d</anchor>
+      <arglist>(const ICalendar &amp;other)</arglist>
+    </member>
+    <member kind="function">
+      <type>ICalendar &amp;</type>
+      <name>operator=</name>
+      <anchorfile>classofx_1_1_time_1_1_i_calendar.html</anchorfile>
+      <anchor>a778d6121e923b60934926d2f27e61c5a</anchor>
+      <arglist>(ICalendar other)</arglist>
+    </member>
+    <member kind="function" virtualness="virtual">
+      <type>virtual</type>
+      <name>~ICalendar</name>
+      <anchorfile>classofx_1_1_time_1_1_i_calendar.html</anchorfile>
+      <anchor>a5bb7b1bbb70532c391537fc4c54f0fbc</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>isLoaded</name>
+      <anchorfile>classofx_1_1_time_1_1_i_calendar.html</anchorfile>
+      <anchor>aa0d094014eaeb8ea9e0f91cbfb225bbc</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>setURI</name>
+      <anchorfile>classofx_1_1_time_1_1_i_calendar.html</anchorfile>
+      <anchor>aa5663b8f2e6cbe77357bf483de6cf99b</anchor>
+      <arglist>(const std::string &amp;uri)</arglist>
+    </member>
+    <member kind="function">
+      <type>Poco::URI</type>
+      <name>getURI</name>
+      <anchorfile>classofx_1_1_time_1_1_i_calendar.html</anchorfile>
+      <anchor>a4ce176e5479321bc6f4206eb3e094297</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>setAutoRefreshInterval</name>
+      <anchorfile>classofx_1_1_time_1_1_i_calendar.html</anchorfile>
+      <anchor>a7162134ced0754c0cbfd5fafa963407c</anchor>
+      <arglist>(unsigned long long autoRefreshInterval)</arglist>
+    </member>
+    <member kind="function">
+      <type>unsigned long long</type>
+      <name>getAutoRefreshInterval</name>
+      <anchorfile>classofx_1_1_time_1_1_i_calendar.html</anchorfile>
+      <anchor>a04a7a4f692f7f1953a1baa308dfcce74</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>parse</name>
+      <anchorfile>classofx_1_1_time_1_1_i_calendar.html</anchorfile>
+      <anchor>aca986f2483783d7a29332b452eeff69b</anchor>
+      <arglist>(const ofBuffer &amp;buffer)</arglist>
+    </member>
+    <member kind="function">
+      <type>std::string</type>
+      <name>getProductID</name>
+      <anchorfile>classofx_1_1_time_1_1_i_calendar.html</anchorfile>
+      <anchor>acb36e1a272dac4d02fbbe804c3b85e85</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>std::string</type>
+      <name>getVersion</name>
+      <anchorfile>classofx_1_1_time_1_1_i_calendar.html</anchorfile>
+      <anchor>a009d377f56d27615c9873ff22d572aba</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>std::string</type>
+      <name>getName</name>
+      <anchorfile>classofx_1_1_time_1_1_i_calendar.html</anchorfile>
+      <anchor>adee6b719fbde8305045d98c5607e5605</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>std::string</type>
+      <name>getDescription</name>
+      <anchorfile>classofx_1_1_time_1_1_i_calendar.html</anchorfile>
+      <anchor>ad19c4823d1c44993579a7dd253771dcd</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>std::string</type>
+      <name>getScale</name>
+      <anchorfile>classofx_1_1_time_1_1_i_calendar.html</anchorfile>
+      <anchor>a0791852fe68c2aab41b71e9aa7861154</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>std::size_t</type>
+      <name>getNumEvents</name>
+      <anchorfile>classofx_1_1_time_1_1_i_calendar.html</anchorfile>
+      <anchor>adc1ef6503d72ed70fa45d375bc701459</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>Poco::Timestamp</type>
+      <name>getLastModified</name>
+      <anchorfile>classofx_1_1_time_1_1_i_calendar.html</anchorfile>
+      <anchor>a70d8dff999b816a43f645d3aabc111d2</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>Events</type>
+      <name>getEvents</name>
+      <anchorfile>classofx_1_1_time_1_1_i_calendar.html</anchorfile>
+      <anchor>ab27dacad687009f06da42522bf901b09</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>Events</type>
+      <name>getEvents</name>
+      <anchorfile>classofx_1_1_time_1_1_i_calendar.html</anchorfile>
+      <anchor>a58b861008489d283b3cc76e716212b49</anchor>
+      <arglist>(const Interval &amp;interval) const </arglist>
+    </member>
+    <member kind="function">
+      <type>Events</type>
+      <name>getEvents</name>
+      <anchorfile>classofx_1_1_time_1_1_i_calendar.html</anchorfile>
+      <anchor>a6a23ce0c56195d1e3f88f01481ab565a</anchor>
+      <arglist>(const Poco::Timestamp &amp;timestamp) const </arglist>
+    </member>
+    <member kind="function">
+      <type>EventInstances</type>
+      <name>getEventInstances</name>
+      <anchorfile>classofx_1_1_time_1_1_i_calendar.html</anchorfile>
+      <anchor>aca5c259dfe7aa6bca97f65b35f2f94ac</anchor>
+      <arglist>(const Interval &amp;interval) const </arglist>
+    </member>
+    <member kind="function">
+      <type>EventInstances</type>
+      <name>getEventInstances</name>
+      <anchorfile>classofx_1_1_time_1_1_i_calendar.html</anchorfile>
+      <anchor>a3ccec212525f2e288b4c283d2e76a1d3</anchor>
+      <arglist>(const Poco::Timestamp &amp;timestamp) const </arglist>
+    </member>
+    <member kind="function">
+      <type>icalcomponent *</type>
+      <name>getComponent</name>
+      <anchorfile>classofx_1_1_time_1_1_i_calendar.html</anchorfile>
+      <anchor>ac732075a596c3efe08d832929bf4ebd5</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>icalcomponent *</type>
+      <name>getComponent</name>
+      <anchorfile>classofx_1_1_time_1_1_i_calendar.html</anchorfile>
+      <anchor>a5360441889b9949e66237b60674a70e5</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="friend">
+      <type>friend std::ostream &amp;</type>
+      <name>operator&lt;&lt;</name>
+      <anchorfile>classofx_1_1_time_1_1_i_calendar.html</anchorfile>
+      <anchor>a78f8064d3baa9020ee2535092b47e8f9</anchor>
+      <arglist>(std::ostream &amp;os, const ICalendar &amp;vec)</arglist>
+    </member>
+  </compound>
+  <compound kind="class">
+    <name>ofx::Time::ICalendarEvent</name>
+    <filename>classofx_1_1_time_1_1_i_calendar_event.html</filename>
+    <member kind="typedef">
+      <type>std::vector&lt; Interval &gt;</type>
+      <name>Instances</name>
+      <anchorfile>classofx_1_1_time_1_1_i_calendar_event.html</anchorfile>
+      <anchor>abf02fd0c8ea54c41d80de92c07f1ffca</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="function" virtualness="virtual">
+      <type>virtual</type>
+      <name>~ICalendarEvent</name>
+      <anchorfile>classofx_1_1_time_1_1_i_calendar_event.html</anchorfile>
+      <anchor>a8e7676c8270a4239a1b153744d4c3d15</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>std::string</type>
+      <name>getDescription</name>
+      <anchorfile>classofx_1_1_time_1_1_i_calendar_event.html</anchorfile>
+      <anchor>a3e1a5519b57d4b9ea784fb3bb5eb5708</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>std::string</type>
+      <name>getSummary</name>
+      <anchorfile>classofx_1_1_time_1_1_i_calendar_event.html</anchorfile>
+      <anchor>ae00a6f6d190d164743abccc511a8b054</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>std::string</type>
+      <name>getUID</name>
+      <anchorfile>classofx_1_1_time_1_1_i_calendar_event.html</anchorfile>
+      <anchor>ac23e06e55ce435a8adbf09536e31b36a</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>std::string</type>
+      <name>getLocation</name>
+      <anchorfile>classofx_1_1_time_1_1_i_calendar_event.html</anchorfile>
+      <anchor>acc4c0ece1b44d4c757b2f1501844500d</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>int</type>
+      <name>getSequence</name>
+      <anchorfile>classofx_1_1_time_1_1_i_calendar_event.html</anchorfile>
+      <anchor>af6000aeaa62b192c524693e183e542f2</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>std::string</type>
+      <name>getStatus</name>
+      <anchorfile>classofx_1_1_time_1_1_i_calendar_event.html</anchorfile>
+      <anchor>a053b39e7b4d19d7a169ca9ddaeb83e8a</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>std::string</type>
+      <name>getName</name>
+      <anchorfile>classofx_1_1_time_1_1_i_calendar_event.html</anchorfile>
+      <anchor>a4cd7c780cad38f00e8559e1e60643df0</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>Poco::Timestamp</type>
+      <name>getLastModified</name>
+      <anchorfile>classofx_1_1_time_1_1_i_calendar_event.html</anchorfile>
+      <anchor>a8ac5277f897a126c77a61ba55417e8d1</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>Poco::Timestamp</type>
+      <name>getTimestamp</name>
+      <anchorfile>classofx_1_1_time_1_1_i_calendar_event.html</anchorfile>
+      <anchor>aa816652d38cc98235518d1cebca0ae1a</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>Poco::Timestamp</type>
+      <name>getCreated</name>
+      <anchorfile>classofx_1_1_time_1_1_i_calendar_event.html</anchorfile>
+      <anchor>a3c231accb3f278a42725f54aaaa95099</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>std::string</type>
+      <name>getOrganizer</name>
+      <anchorfile>classofx_1_1_time_1_1_i_calendar_event.html</anchorfile>
+      <anchor>a8f26ac4b4d2e6cbe0c4a96392c887753</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>std::string</type>
+      <name>getOwner</name>
+      <anchorfile>classofx_1_1_time_1_1_i_calendar_event.html</anchorfile>
+      <anchor>af522a3bdfbb15ff177d309012536392c</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>Poco::Timestamp</type>
+      <name>getStart</name>
+      <anchorfile>classofx_1_1_time_1_1_i_calendar_event.html</anchorfile>
+      <anchor>a76aba467ef3e9f71fe878e81a34147bf</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>Poco::Timestamp</type>
+      <name>getEnd</name>
+      <anchorfile>classofx_1_1_time_1_1_i_calendar_event.html</anchorfile>
+      <anchor>a2505dc0acf5cf5a0d297a71eb3b1f66a</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>isValid</name>
+      <anchorfile>classofx_1_1_time_1_1_i_calendar_event.html</anchorfile>
+      <anchor>abc27254137da1acb4f353ba92aa9ddc9</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>isValidInterval</name>
+      <anchorfile>classofx_1_1_time_1_1_i_calendar_event.html</anchorfile>
+      <anchor>ad44bb9d11c8ce47b7407f0e4c06e214f</anchor>
+      <arglist>(const Interval &amp;interval) const </arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>hasInstances</name>
+      <anchorfile>classofx_1_1_time_1_1_i_calendar_event.html</anchorfile>
+      <anchor>ab8a1fb80904ddebfd507c8a99cb7ed55</anchor>
+      <arglist>(const Interval &amp;interval) const </arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>hasInstances</name>
+      <anchorfile>classofx_1_1_time_1_1_i_calendar_event.html</anchorfile>
+      <anchor>ac82271926507cf1fd018de065bd3619f</anchor>
+      <arglist>(const Poco::Timestamp &amp;timestamp) const </arglist>
+    </member>
+    <member kind="function">
+      <type>Instances</type>
+      <name>getInstances</name>
+      <anchorfile>classofx_1_1_time_1_1_i_calendar_event.html</anchorfile>
+      <anchor>aba961fc609f2642eacb06a319562b38b</anchor>
+      <arglist>(const Interval &amp;Interval) const </arglist>
+    </member>
+    <member kind="function">
+      <type>Instances</type>
+      <name>getInstances</name>
+      <anchorfile>classofx_1_1_time_1_1_i_calendar_event.html</anchorfile>
+      <anchor>a0bd8b041d6d392260415f005776f4320</anchor>
+      <arglist>(const Poco::Timestamp &amp;timestamp) const </arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>operator==</name>
+      <anchorfile>classofx_1_1_time_1_1_i_calendar_event.html</anchorfile>
+      <anchor>a8d01226e4a8ee61f5249f5cf61304e81</anchor>
+      <arglist>(const ICalendarEvent &amp;event) const </arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>operator!=</name>
+      <anchorfile>classofx_1_1_time_1_1_i_calendar_event.html</anchorfile>
+      <anchor>a0808bd299b52f4aadb4d1a1de4321543</anchor>
+      <arglist>(const ICalendarEvent &amp;event) const </arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>operator&gt;</name>
+      <anchorfile>classofx_1_1_time_1_1_i_calendar_event.html</anchorfile>
+      <anchor>a6adca44a9a7404d0a273df59f4310667</anchor>
+      <arglist>(const ICalendarEvent &amp;event) const </arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>operator&gt;=</name>
+      <anchorfile>classofx_1_1_time_1_1_i_calendar_event.html</anchorfile>
+      <anchor>a4795b28a4c0fd635ecddf8964cb18327</anchor>
+      <arglist>(const ICalendarEvent &amp;event) const </arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>operator&lt;</name>
+      <anchorfile>classofx_1_1_time_1_1_i_calendar_event.html</anchorfile>
+      <anchor>a392608c1123eb7dd473b885a8eb47c95</anchor>
+      <arglist>(const ICalendarEvent &amp;event) const </arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>operator&lt;=</name>
+      <anchorfile>classofx_1_1_time_1_1_i_calendar_event.html</anchorfile>
+      <anchor>a52cea9181b51480981c88ff92b779a26</anchor>
+      <arglist>(const ICalendarEvent &amp;event) const </arglist>
+    </member>
+    <member kind="function" static="yes">
+      <type>static icalcomponent *</type>
+      <name>getEventComponentForUID</name>
+      <anchorfile>classofx_1_1_time_1_1_i_calendar_event.html</anchorfile>
+      <anchor>a0e328d5dfcc9e2a8bfa1b13ba894c828</anchor>
+      <arglist>(icalcomponent *parent, const std::string &amp;uid)</arglist>
+    </member>
+    <member kind="friend" protection="private">
+      <type>friend class</type>
+      <name>ICalendar</name>
+      <anchorfile>classofx_1_1_time_1_1_i_calendar_event.html</anchorfile>
+      <anchor>a27e8df51d4b401b0cf0c0588e132669a</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="friend">
+      <type>friend std::ostream &amp;</type>
+      <name>operator&lt;&lt;</name>
+      <anchorfile>classofx_1_1_time_1_1_i_calendar_event.html</anchorfile>
+      <anchor>a5cb20171a2cd043118a0b760194c97f9</anchor>
+      <arglist>(std::ostream &amp;os, const ICalendarEvent &amp;event)</arglist>
+    </member>
+  </compound>
+  <compound kind="class">
+    <name>ofx::Time::ICalendarEventInstance</name>
+    <filename>classofx_1_1_time_1_1_i_calendar_event_instance.html</filename>
+    <member kind="function">
+      <type></type>
+      <name>ICalendarEventInstance</name>
+      <anchorfile>classofx_1_1_time_1_1_i_calendar_event_instance.html</anchorfile>
+      <anchor>afd6aabee98d4fe93eb4849275ee16e58</anchor>
+      <arglist>(const ICalendarEvent &amp;event, const Interval &amp;interval)</arglist>
+    </member>
+    <member kind="function" virtualness="virtual">
+      <type>virtual</type>
+      <name>~ICalendarEventInstance</name>
+      <anchorfile>classofx_1_1_time_1_1_i_calendar_event_instance.html</anchorfile>
+      <anchor>ae53d5f8c3fd7fea9063b6d45f0fb285e</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>ICalendarEvent</type>
+      <name>getEvent</name>
+      <anchorfile>classofx_1_1_time_1_1_i_calendar_event_instance.html</anchorfile>
+      <anchor>abfe24d484eb33d568d51b5059b45f2b2</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>Interval</type>
+      <name>getInterval</name>
+      <anchorfile>classofx_1_1_time_1_1_i_calendar_event_instance.html</anchorfile>
+      <anchor>aa8f738384887004f61020cb82f26c77b</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>isValidEventInstance</name>
+      <anchorfile>classofx_1_1_time_1_1_i_calendar_event_instance.html</anchorfile>
+      <anchor>a9007f3ef5fa4f63ff77b042567c9682b</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>operator==</name>
+      <anchorfile>classofx_1_1_time_1_1_i_calendar_event_instance.html</anchorfile>
+      <anchor>ac49265e0db52a062b00d750a519208f8</anchor>
+      <arglist>(const ICalendarEventInstance &amp;other) const </arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>operator!=</name>
+      <anchorfile>classofx_1_1_time_1_1_i_calendar_event_instance.html</anchorfile>
+      <anchor>a6b3b1f5b3bcd92f7663f8bae69465488</anchor>
+      <arglist>(const ICalendarEventInstance &amp;other) const </arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>operator&gt;</name>
+      <anchorfile>classofx_1_1_time_1_1_i_calendar_event_instance.html</anchorfile>
+      <anchor>aca7b8e5399b6c973df740fffdf1d3a1c</anchor>
+      <arglist>(const ICalendarEventInstance &amp;other) const </arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>operator&gt;=</name>
+      <anchorfile>classofx_1_1_time_1_1_i_calendar_event_instance.html</anchorfile>
+      <anchor>a2e813eb60813bc395767eba39ce99525</anchor>
+      <arglist>(const ICalendarEventInstance &amp;other) const </arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>operator&lt;</name>
+      <anchorfile>classofx_1_1_time_1_1_i_calendar_event_instance.html</anchorfile>
+      <anchor>a6cdc837c8f8f4ca2e34d82a848d21d46</anchor>
+      <arglist>(const ICalendarEventInstance &amp;other) const </arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>operator&lt;=</name>
+      <anchorfile>classofx_1_1_time_1_1_i_calendar_event_instance.html</anchorfile>
+      <anchor>a3147658f57e8f332f331c307ea85a100</anchor>
+      <arglist>(const ICalendarEventInstance &amp;other) const </arglist>
+    </member>
+  </compound>
+  <compound kind="class">
+    <name>ofx::Time::ICalendarInterface</name>
+    <filename>classofx_1_1_time_1_1_i_calendar_interface.html</filename>
+    <member kind="function" virtualness="pure">
+      <type>virtual icalcomponent *</type>
+      <name>getComponent</name>
+      <anchorfile>classofx_1_1_time_1_1_i_calendar_interface.html</anchorfile>
+      <anchor>ac04b6293b46d0d5d38525f4329902dc3</anchor>
+      <arglist>()=0</arglist>
+    </member>
+    <member kind="function" virtualness="pure">
+      <type>virtual icalcomponent *</type>
+      <name>getComponent</name>
+      <anchorfile>classofx_1_1_time_1_1_i_calendar_interface.html</anchorfile>
+      <anchor>ad49517f5bce7a8a8e45d565576e288f4</anchor>
+      <arglist>() const =0</arglist>
+    </member>
+  </compound>
+  <compound kind="class">
+    <name>ofx::Time::ICalendarUtils</name>
+    <filename>classofx_1_1_time_1_1_i_calendar_utils.html</filename>
+    <member kind="function" static="yes">
+      <type>static bool</type>
+      <name>timeToTimestamp</name>
+      <anchorfile>classofx_1_1_time_1_1_i_calendar_utils.html</anchorfile>
+      <anchor>a6d0adf62ba77c528b37c6112bbf32788</anchor>
+      <arglist>(struct icaltimetype time, Poco::Timestamp &amp;timestamp)</arglist>
+    </member>
+    <member kind="function" static="yes">
+      <type>static bool</type>
+      <name>getExtensionValue</name>
+      <anchorfile>classofx_1_1_time_1_1_i_calendar_utils.html</anchorfile>
+      <anchor>a3aed4e096ef3c8d4b54dfd665a7e372c</anchor>
+      <arglist>(icalcomponent *pComponent, const std::string &amp;key, std::string &amp;value)</arglist>
+    </member>
+  </compound>
+  <compound kind="class">
+    <name>ofx::Time::ICalendarWatcher</name>
+    <filename>classofx_1_1_time_1_1_i_calendar_watcher.html</filename>
+    <member kind="typedef">
+      <type>std::shared_ptr&lt; ICalendarWatcher &gt;</type>
+      <name>SharedPtr</name>
+      <anchorfile>classofx_1_1_time_1_1_i_calendar_watcher.html</anchorfile>
+      <anchor>ae13bf4f2644af3c02d3df9fe82dd359a</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>ICalendarWatcher</name>
+      <anchorfile>classofx_1_1_time_1_1_i_calendar_watcher.html</anchorfile>
+      <anchor>aa3206cf701463db5c683cbd5f6cbad11</anchor>
+      <arglist>(ICalendar::SharedPtr calendar)</arglist>
+    </member>
+    <member kind="function" virtualness="virtual">
+      <type>virtual</type>
+      <name>~ICalendarWatcher</name>
+      <anchorfile>classofx_1_1_time_1_1_i_calendar_watcher.html</anchorfile>
+      <anchor>a916acf03c8322bcfcd54716414d73d67</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>setUpdateInterval</name>
+      <anchorfile>classofx_1_1_time_1_1_i_calendar_watcher.html</anchorfile>
+      <anchor>aa080d3533b2b3d4fa4fdfe862855eb65</anchor>
+      <arglist>(unsigned long long updateInterval)</arglist>
+    </member>
+    <member kind="function">
+      <type>unsigned long long</type>
+      <name>getUpdateInterval</name>
+      <anchorfile>classofx_1_1_time_1_1_i_calendar_watcher.html</anchorfile>
+      <anchor>a6313d5311d9ffefac4a0d50204736f25</anchor>
+      <arglist>() const </arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>registerAllEvents</name>
+      <anchorfile>classofx_1_1_time_1_1_i_calendar_watcher.html</anchorfile>
+      <anchor>a1f06a64289f4454b265e8962fc294949</anchor>
+      <arglist>(ListenerClass *listener, int order=OF_EVENT_ORDER_AFTER_APP)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>unregisterAllEvents</name>
+      <anchorfile>classofx_1_1_time_1_1_i_calendar_watcher.html</anchorfile>
+      <anchor>a5e993c1662c13b69ae7fb9a0d153f4b3</anchor>
+      <arglist>(ListenerClass *listener)</arglist>
+    </member>
+    <member kind="variable">
+      <type>ICalendarWatcherEvents</type>
+      <name>events</name>
+      <anchorfile>classofx_1_1_time_1_1_i_calendar_watcher.html</anchorfile>
+      <anchor>aa6280411f33cb595057a2fe8c288d8e5</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable" static="yes">
+      <type>static const Poco::Timespan</type>
+      <name>DEFAULT_UPDATE_INTERVAL</name>
+      <anchorfile>classofx_1_1_time_1_1_i_calendar_watcher.html</anchorfile>
+      <anchor>aa27381ac0255f181f3fd90d2c6966c63</anchor>
+      <arglist></arglist>
+    </member>
+  </compound>
+  <compound kind="class">
+    <name>ofx::Time::ICalendarWatcherEvents</name>
+    <filename>classofx_1_1_time_1_1_i_calendar_watcher_events.html</filename>
+    <member kind="variable">
+      <type>ofEvent&lt; const ICalendarEventInstance &gt;</type>
+      <name>onEventAdded</name>
+      <anchorfile>classofx_1_1_time_1_1_i_calendar_watcher_events.html</anchorfile>
+      <anchor>a6c19d0867429f8ad8e4e3d65cb6b8dfc</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>ofEvent&lt; const ICalendarEventInstance &gt;</type>
+      <name>onEventRemoved</name>
+      <anchorfile>classofx_1_1_time_1_1_i_calendar_watcher_events.html</anchorfile>
+      <anchor>a1a5d7b367c40c791b8dd4cff8c56cbc5</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>ofEvent&lt; const ICalendarEventInstance &gt;</type>
+      <name>onEventModified</name>
+      <anchorfile>classofx_1_1_time_1_1_i_calendar_watcher_events.html</anchorfile>
+      <anchor>ab5238eb78cfab3c7cf1778dad9f7125e</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>ofEvent&lt; const ICalendarEventInstance &gt;</type>
+      <name>onEventStarted</name>
+      <anchorfile>classofx_1_1_time_1_1_i_calendar_watcher_events.html</anchorfile>
+      <anchor>a99121b3a1ebf288cc97ff5172c2905cf</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>ofEvent&lt; const ICalendarEventInstance &gt;</type>
+      <name>onEventEnded</name>
+      <anchorfile>classofx_1_1_time_1_1_i_calendar_watcher_events.html</anchorfile>
+      <anchor>a7ba19d841430d87ee97f633e79642a79</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>ofEvent&lt; const Poco::Exception &gt;</type>
+      <name>onError</name>
+      <anchorfile>classofx_1_1_time_1_1_i_calendar_watcher_events.html</anchorfile>
+      <anchor>a28fe5857c9a21962d75d326d365bf17b</anchor>
+      <arglist></arglist>
+    </member>
+  </compound>
+  <compound kind="dir">
+    <name>/Users/bakercp/Programming/c-cpp/of-my/openFrameworks/addons/ofxICalendar/libs/ofxICalendar/include</name>
+    <path>/Users/bakercp/Programming/c-cpp/of-my/openFrameworks/addons/ofxICalendar/libs/ofxICalendar/include/</path>
+    <filename>dir_f8045926529604941d681fd00551d42a.html</filename>
+    <dir>/Users/bakercp/Programming/c-cpp/of-my/openFrameworks/addons/ofxICalendar/libs/ofxICalendar/include/ofx</dir>
+  </compound>
+  <compound kind="dir">
+    <name>/Users/bakercp/Programming/c-cpp/of-my/openFrameworks/addons/ofxICalendar/libs</name>
+    <path>/Users/bakercp/Programming/c-cpp/of-my/openFrameworks/addons/ofxICalendar/libs/</path>
+    <filename>dir_489d7db6c98e2eec833a002eb9e0f010.html</filename>
+    <dir>/Users/bakercp/Programming/c-cpp/of-my/openFrameworks/addons/ofxICalendar/libs/ofxICalendar</dir>
+  </compound>
+  <compound kind="dir">
+    <name>/Users/bakercp/Programming/c-cpp/of-my/openFrameworks/addons/ofxICalendar/libs/ofxICalendar/include/ofx</name>
+    <path>/Users/bakercp/Programming/c-cpp/of-my/openFrameworks/addons/ofxICalendar/libs/ofxICalendar/include/ofx/</path>
+    <filename>dir_dbe0b7717d557a3014012a91354f1279.html</filename>
+    <dir>/Users/bakercp/Programming/c-cpp/of-my/openFrameworks/addons/ofxICalendar/libs/ofxICalendar/include/ofx/Time</dir>
+  </compound>
+  <compound kind="dir">
+    <name>/Users/bakercp/Programming/c-cpp/of-my/openFrameworks/addons/ofxICalendar/libs/ofxICalendar</name>
+    <path>/Users/bakercp/Programming/c-cpp/of-my/openFrameworks/addons/ofxICalendar/libs/ofxICalendar/</path>
+    <filename>dir_f0fa765911516b196862ad2304936589.html</filename>
+    <dir>/Users/bakercp/Programming/c-cpp/of-my/openFrameworks/addons/ofxICalendar/libs/ofxICalendar/include</dir>
+    <dir>/Users/bakercp/Programming/c-cpp/of-my/openFrameworks/addons/ofxICalendar/libs/ofxICalendar/src</dir>
+  </compound>
+  <compound kind="dir">
+    <name>/Users/bakercp/Programming/c-cpp/of-my/openFrameworks/addons/ofxICalendar/src</name>
+    <path>/Users/bakercp/Programming/c-cpp/of-my/openFrameworks/addons/ofxICalendar/src/</path>
+    <filename>dir_41cd955f1d8b1696625bba5f4c13ffb9.html</filename>
+    <file>ofxICalendar.h</file>
+  </compound>
+  <compound kind="dir">
+    <name>/Users/bakercp/Programming/c-cpp/of-my/openFrameworks/addons/ofxICalendar/libs/ofxICalendar/src</name>
+    <path>/Users/bakercp/Programming/c-cpp/of-my/openFrameworks/addons/ofxICalendar/libs/ofxICalendar/src/</path>
+    <filename>dir_4174e5074e5c46a26d6b1165e91d8f41.html</filename>
+    <file>ICalendar.cpp</file>
+    <file>ICalendarEvent.cpp</file>
+    <file>ICalendarEventInstance.cpp</file>
+    <file>ICalendarEvents.cpp</file>
+    <file>ICalendarUtils.cpp</file>
+    <file>ICalendarWatcher.cpp</file>
+  </compound>
+  <compound kind="dir">
+    <name>/Users/bakercp/Programming/c-cpp/of-my/openFrameworks/addons/ofxICalendar/libs/ofxICalendar/include/ofx/Time</name>
+    <path>/Users/bakercp/Programming/c-cpp/of-my/openFrameworks/addons/ofxICalendar/libs/ofxICalendar/include/ofx/Time/</path>
+    <filename>dir_8dd06fed33cf27412fbea95518b619cc.html</filename>
+    <file>ICalendar.h</file>
+    <file>ICalendarEvent.h</file>
+    <file>ICalendarEventInstance.h</file>
+    <file>ICalendarInterface.h</file>
+    <file>ICalendarUtils.h</file>
+    <file>ICalendarWatcher.h</file>
+    <file>ICalendarWatcherEvents.h</file>
+  </compound>
+</tagfile>
