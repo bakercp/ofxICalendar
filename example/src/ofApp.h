@@ -54,6 +54,8 @@ public:
     void onCalendarWatcherEventEnded(const ICalendarEventInstance& instance);
     void onCalendarWatcherError(const Poco::Exception& exception);
 
+    void processInstance(const ICalendarEventInstance& instance);
+
     ICalendar::SharedPtr calendar;
     ICalendarWatcher::SharedPtr watcher;
 
@@ -65,5 +67,8 @@ public:
     };
 
     std::deque<std::string> messages;
+
+    ofColor currentColor;
+    float currentSpeed;
 
 };

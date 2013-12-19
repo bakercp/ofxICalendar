@@ -32,6 +32,10 @@ void ofApp::setup()
     ofEnableAlphaBlending();
     ofSetFrameRate(30);
 
+    ofColor currentColor = ofColor::black;
+    float currentSpeed = 0;
+
+
     // currently basic.ics is being downloaded from here
     // "https://www.google.com/calendar/ical/christopherbaker.net_91ul9n5dq2b6pkmin511q3bq14%40group.calendar.google.com/public/basic.ics";
 
@@ -63,16 +67,22 @@ void ofApp::draw()
 
     std::deque<std::string>::const_iterator iter = messages.begin();
 
+    ofDrawBitmapStringHighlight("Events:", 20, y);
+
     while (iter != messages.end())
     {
-        ofDrawBitmapString(*iter, 0, y);
-
         y += 14;
+
+        ofDrawBitmapString(*iter, 20, y);
 
         if (y > ofGetHeight()) break;
 
         ++iter;
     }
+
+    ofDrawBitmapStringHighlight("From the Current Event Description:", 20, ofGetHeight() - 45);
+    ofDrawBitmapString("color: " + ofToString(currentColor), 20, ofGetHeight() - 30);
+    ofDrawBitmapString("speed: " + ofToString(currentSpeed), 20, ofGetHeight() - 15);
 }
 
 //------------------------------------------------------------------------------
@@ -106,34 +116,79 @@ void ofApp::gotMessage(ofMessage msg)
     }
 }
 
+void ofApp::processInstance(const ICalendarEventInstance& instance)
+{
+    if (instance.isValidEventInstance())
+    {
+        std::string description = instance.getEvent().getDescription();
+
+        std::vector<std::string> lines = ofSplitString(description, "\n", true, true);
+
+        std::vector<std::string>::iterator iter = lines.begin();
+
+        while (iter != lines.end())
+        {
+            std::vector<std::string> tokens = ofSplitString(*iter,"=", true, true);
+
+            if (tokens.size() == 2)
+            {
+                if (tokens[0] == "color")
+                {
+                    std::stringstream ss;
+                    ss << tokens[1];
+                    ss >> currentColor;
+                }
+                else if(tokens[0] == "speed")
+                {
+                    currentSpeed = ofToFloat(tokens[1]);
+                }
+                else
+                {
+                    ofLogError("ofApp::processInstance") << "Unknown key.";
+                }
+            }
+
+            ++iter;
+        }
+    }
+}
+
+
 //------------------------------------------------------------------------------
 void ofApp::onCalendarWatcherEventAdded(const ICalendarEventInstance& instance)
 {
-    ofSendMessage("ADDED: " + instance.getEvent().getUID() + " " + instance.getEvent().getSummary() );
+    ofSendMessage("ADDED: " + instance.getEvent().getSummary() );
+
+    processInstance(instance);
 }
 
 //------------------------------------------------------------------------------
 void ofApp::onCalendarWatcherEventRemoved(const ICalendarEventInstance& instance)
 {
+    // note, there is a good chance this event will be invalid
     ofSendMessage("REMOVED: " + instance.getEvent().getUID());
 }
 
 //------------------------------------------------------------------------------
 void ofApp::onCalendarWatcherEventModified(const ICalendarEventInstance& instance)
 {
-    ofSendMessage("MODIFIED: " + instance.getEvent().getUID() + " " + instance.getEvent().getSummary() );
+    ofSendMessage("MODIFIED: " + instance.getEvent().getSummary() );
+
+    processInstance(instance);
 }
 
 //------------------------------------------------------------------------------
 void ofApp::onCalendarWatcherEventStarted(const ICalendarEventInstance& instance)
 {
-    ofSendMessage("STARTED: " + instance.getEvent().getUID() + " " + instance.getEvent().getSummary() );
+    ofSendMessage("STARTED: " + instance.getEvent().getSummary() );
+
+    processInstance(instance);
 }
 
 //------------------------------------------------------------------------------
 void ofApp::onCalendarWatcherEventEnded(const ICalendarEventInstance& instance)
 {
-    ofSendMessage("ENDED: " + instance.getEvent().getUID() + " " + instance.getEvent().getSummary() );
+    ofSendMessage("ENDED: " + instance.getEvent().getSummary() );
 }
 
 //------------------------------------------------------------------------------
