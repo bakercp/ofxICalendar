@@ -10,3 +10,5 @@ Turn installations on and off.  Make your Raspberry Pi powered alarm clock wake 
 Remote control your installation using a Google Calendar.
 
 Requires ofxTime https://github.com/bakercp/ofxTime
+
+See the `docs` folder for more info.
