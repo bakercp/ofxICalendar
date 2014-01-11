@@ -63,11 +63,13 @@ void ofApp::draw()
         calendarWidget->draw();
     }
 
-    int y = 14;
+    int y = 30;
 
     std::deque<std::string>::const_iterator iter = messages.begin();
 
     ofDrawBitmapStringHighlight("Events:", 20, y);
+
+    y += 10;
 
     while (iter != messages.end())
     {
