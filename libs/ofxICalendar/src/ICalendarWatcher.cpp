@@ -35,9 +35,10 @@ const Poco::Timespan ICalendarWatcher::DEFAULT_UPDATE_INTERVAL = 1 * Poco::Times
 
 ICalendarWatcher::ICalendarWatcher(ICalendar::SharedPtr calendar):
     _calendar(calendar),
-    _lastUpdate(Poco::Timestamp::Timestamp() - DEFAULT_UPDATE_INTERVAL.totalMicroseconds()),
     _updateInterval(DEFAULT_UPDATE_INTERVAL)
 {
+    _lastUpdate = Poco::Timestamp::Timestamp() - DEFAULT_UPDATE_INTERVAL.totalMicroseconds();
+
     ofAddListener(ofEvents().update, this, &ICalendarWatcher::update);
 }
 
