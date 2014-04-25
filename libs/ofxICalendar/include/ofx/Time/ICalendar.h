@@ -225,9 +225,8 @@ public:
         }
     }
 
-    bool reload()
+    void reload()
     {
-        cout << "relading!" << endl;
         if (!_uri.empty())
         {
             ofBuffer buffer;
@@ -238,7 +237,6 @@ public:
                 _calendarBuffer = buffer; // lock while we set the buffer
             }
         }
-
     }
 
 private:
