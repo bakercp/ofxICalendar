@@ -211,7 +211,7 @@ public:
 
     virtual void threadedFunction()
     {
-        while (true)
+        while (isThreadRunning())
         {
             Poco::Timestamp now;
 
