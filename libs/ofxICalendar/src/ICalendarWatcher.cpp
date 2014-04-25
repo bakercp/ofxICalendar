@@ -37,7 +37,7 @@ ICalendarWatcher::ICalendarWatcher(ICalendar::SharedPtr calendar):
     _calendar(calendar),
     _updateInterval(DEFAULT_UPDATE_INTERVAL)
 {
-    _lastUpdate = Poco::Timestamp::Timestamp();
+    _lastUpdate.update();
     _lastUpdate -= DEFAULT_UPDATE_INTERVAL.totalMicroseconds();
 
     ofAddListener(ofEvents().update, this, &ICalendarWatcher::update);
