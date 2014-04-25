@@ -30,10 +30,14 @@ namespace ofx {
 namespace Time {
 
 
+const Poco::Timespan ICalendar::DEFAULT_UPDATE_INTERVAL = 0;
+
+
 ICalendar::ICalendar(const std::string& uri, unsigned long long autoRefreshInterval):
     _pICalendar(0),
-    _calendarBuffer(""),
-    _autoUpdateTimer(0, autoRefreshInterval)
+    _uri(""),
+    _autoUpdateTimer(0, autoRefreshInterval),
+    _calendarBuffer("")
 {
     ofAddListener(ofEvents().update, this, &ICalendar::update);
 
@@ -45,7 +49,10 @@ ICalendar::ICalendar(const std::string& uri, unsigned long long autoRefreshInter
 
 ICalendar::ICalendar(const ICalendar& other):
     _pICalendar(0),
-    _calendarBuffer("")
+    _uri(other._uri),
+    _autoUpdateTimer(other._autoUpdateTimer.getStartInterval(),
+                     other._autoUpdateTimer.getPeriodicInterval()),
+    _calendarBuffer(other._calendarBuffer)
 {
     if(other._pICalendar)
     {
@@ -358,6 +365,7 @@ Poco::Timestamp ICalendar::getLastModified() const
                                                                ICAL_ANY_COMPONENT);
         }
 
+        return lastModification;
     }
     else
     {
