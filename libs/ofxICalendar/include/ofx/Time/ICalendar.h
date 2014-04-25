@@ -51,7 +51,9 @@ namespace Time {
 
     
 /// \brief The ICalendar class implements the RFC 2445 icalendar format.
-class ICalendar: public ICalendarInterface
+class ICalendar:
+    public ICalendarInterface,
+    public ofThread
 {
 public:
     /// \brief A shared pointer typedef.
@@ -207,15 +209,32 @@ public:
     static const Poco::Timespan DEFAULT_UPDATE_INTERVAL;
         ///< The default update interval in microseconds for updating the watch.
 
+    virtual void threadedFunction()
+    {
+        while (true)
+        {
+            Poco::Timestamp now;
+
+            if (now >= _nextUpdate)
+            {
+                reload();
+                _nextUpdate = now + _autoUpdateInterval * Poco::Timespan::MILLISECONDS;
+            }
+
+            sleep(100);
+        }
+    }
+
     bool reload()
     {
+        cout << "relading!" << endl;
         if (!_uri.empty())
         {
             ofBuffer buffer;
 
             if (loadURI(_uri, buffer))
             {
-                //                ofScopedLock lock(_mutex);
+                ofScopedLock lock(_mutex);
                 _calendarBuffer = buffer; // lock while we set the buffer
             }
         }
@@ -229,6 +248,9 @@ private:
 
     Poco::URI _uri;
         ///< \brief The URI of the store.
+
+    Poco::Timestamp _nextUpdate;
+        ///< \brief A record of the nextupdate;
 
     unsigned long long _autoUpdateInterval;
         ///< \brief An automatic update interval.

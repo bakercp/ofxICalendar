@@ -37,6 +37,7 @@ ICalendar::ICalendar(const std::string& uri, unsigned long long autoRefreshInter
     _pICalendar(0),
     _uri(""),
 //    _autoUpdateTimer(0, autoRefreshInterval),
+    _nextUpdate(0),
     _autoUpdateInterval(autoRefreshInterval),
     _calendarBuffer("")
 {
@@ -579,8 +580,17 @@ bool ICalendar::loadURI(const Poco::URI& uri, ofBuffer& buffer)
     if (_uri.getScheme() == "http" || _uri.getScheme() == "https")
     {
         ofHttpResponse response = ofLoadURL(_uri.toString());
-        buffer = response.data;
-        return true;
+
+        if (200 == response.status)
+        {
+            buffer = response.data;
+            return true;
+        }
+        else
+        {
+            ofLogError("ICalendar::loadURI()") << "URI: " << uri.toString() << ": " << response.error;
+            return false;
+        }
     }
     else if(_uri.getScheme() == "file" || _uri.getScheme().empty())
     {

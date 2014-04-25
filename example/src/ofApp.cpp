@@ -39,6 +39,7 @@ void ofApp::setup()
     calendar = ICalendar::makeShared("basic.ics", 60000);
 
     calendar->reload();
+    calendar->startThread();
 
     watcher = ICalendarWatcher::makeShared(calendar);
     
