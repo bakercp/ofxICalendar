@@ -39,16 +39,16 @@ namespace ofx {
 namespace Time {
 
 
+/// An ICalendarEventInstance class stores a Range representing an instance
+/// of an event and a copy to the original event's unique idetification key.
+/// An ICalendarEventInstance can represent a singular event associated with
+/// an Event or one instantiation of an Event recurrence.
+//
+/// Before using an ICalendarEventInstance the user should verify that the
+/// instance is valid by calling isValidEventInstance().  Depending on the
+/// situation, the event instance may become invalid if the backing ICalendar
+/// no longer contains the event.
 class ICalendarEventInstance
-    // An ICalendarEventInstance class stores a Range representing an instance
-    // of an event and a copy to the original event's unique idetification key.
-    // An ICalendarEventInstance can represent a singular event associated with
-    // an Event or one instantiation of an Event recurrence.
-    //
-    // Before using an ICalendarEventInstance the user should verify that the
-    // instance is valid by calling isValidEventInstance().  Depending on the
-    // situation, the event instance may become invalid if the backing ICalendar
-    // no longer contains the event.
 {
 public:
     ICalendarEventInstance(const ICalendarEvent& event,
@@ -93,8 +93,11 @@ public:
         ///< is less than or equal to the given instance's minimum.
 
 private:
-    ICalendarEvent _event;  ///< A copy of the event source for this instance
-    Interval _interval;     ///< The time range for the instance of the event.
+    ICalendarEvent _event;
+        ///< \brief A copy of the event source for this instance
+
+    Interval _interval;
+        ///< \brief The time range for the instance of the event.
 
 };
 

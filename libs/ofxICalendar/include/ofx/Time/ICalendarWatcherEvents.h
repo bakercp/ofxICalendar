@@ -36,24 +36,23 @@ namespace ofx {
 namespace Time {
 
 
+/// \brief ICalendarWatcherEvents is a collection of events that might be
+/// triggered while watching an ICalendar.
+///
+/// Before using an ICalendarEventInstance that has been passed with
+/// and event, the user should verify that the instance is valid by
+/// calling isValidEventInstance().  Depending on the situation,
+/// the event instance may become invalid if the backing ICalendar
+/// no longer contains the event.
 class ICalendarWatcherEvents
 {
-    // ICalendarWatcherEvents is a collection of events that might be
-    // triggered while watching an ICalendar.
-    //
-    // Before using an ICalendarEventInstance that has been passed with
-    // and event, the user should verify that the instance is valid by
-    // calling isValidEventInstance().  Depending on the situation,
-    // the event instance may become invalid if the backing ICalendar
-    // no longer contains the event.
 public:
+    /// \brief Creates an ICalendarWatcherEvents object.
     ICalendarWatcherEvents()
-        ///< Creates an ICalendarWatcherEvents object.
     {
     }
-
+    /// \brief Destroys an ICalendarWatcherEvents object.
     virtual ~ICalendarWatcherEvents()
-        ///< Destroys an ICalendarWatcherEvents object.
     {
     }
 

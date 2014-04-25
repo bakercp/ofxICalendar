@@ -33,26 +33,21 @@ namespace ofx {
 namespace Time {
 
     
+/// \brief The ICalendarInteface class provides access to underlying
+/// libicalcomponent pointers.
 class ICalendarInterface
-    // The ICalendarInteface class provides access to
-    // underlying libicalcomponent pointers.
 {
 public:
-    ICalendarInterface()
-        ///< Creates an empty calendar.
-    {
-    }
-
+    /// \brief Frees the internal icalcomponent* if it was allocated.
     virtual ~ICalendarInterface()
-        ///< Frees the internal icalcomponent* if it was allocated.
     {
     }
 
+    /// \returns the underlying libicalcomponent.
     virtual icalcomponent* getComponent() = 0;
-        ///< Returns the underlying libicalcomponent.
 
+    /// \returns the underlying libicalcomponent.
     virtual icalcomponent* getComponent() const = 0;
-        ///< Returns the underlying libicalcomponent.
 
 };
 

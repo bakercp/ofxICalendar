@@ -45,17 +45,17 @@ class ICalendarUtils
     /// between openFrameworks, Poco and libical.
 {
 public:
+    /// \returns true iff the passed icaltimetype is both non-null
+    /// and valid.  A valid time is assigned to the Poco::Timestamp.
     static bool timeToTimestamp(struct icaltimetype time,
                                 Poco::Timestamp& timestamp);
-        ///< Returns true iff the passed icaltimetype is both non-null
-        ///< and valid.  A valid time is assigned to the Poco::Timestamp.
 
+    /// \returns true iff the icalendar X property defined by the key
+    /// was found icalcomponent.  A key with a valid value is assigned
+    /// to the passed value.
     static bool getExtensionValue(icalcomponent* pComponent,
                                   const std::string& key,
                                   std::string& value);
-        ///< Returns true iff the icalendar X property defined by the key
-        ///< was found icalcomponent.  A key with a valid value is assigned
-        ///< to the passed value.
 
 //    static void sortByStartTime(std::vector<ICalendarEvent>& events);
 //

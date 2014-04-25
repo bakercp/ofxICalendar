@@ -50,136 +50,153 @@ namespace ofx {
 namespace Time {
 
     
+/// \brief The ICalendar class implements the RFC 2445 icalendar format.
 class ICalendar: public ICalendarInterface
-    // The ICalendar class implements the RFC 2445 icalendar format.
 {
 public:
+    /// \brief A shared pointer typedef.
     typedef std::shared_ptr<ICalendar> SharedPtr;
-        ///< A shared pointer typedef.
 
+    /// \brief A weak pointer typedef.
     typedef std::weak_ptr<ICalendar> WeakPtr;
-        ///< A weak pointer typedef.
 
+    /// \brief A collection of events.
     typedef std::vector<ICalendarEvent> Events;
-        ///< A collection of events.
 
+    /// \brief A collection of events.
     typedef std::vector<ICalendarEventInstance> EventInstances;
-        ///< A collection of events.
 
+    /// \brief Creates a calendar with the given uri.
+    /// \param uri the uri of the calnedar.
+    /// \param the automatic refresh interval.
     ICalendar(const std::string& uri, unsigned long long autoRefreshInterval = 0);
-        ///< Creates a calendar with the given uri.
-        ///< Update interval specifies the auto refresh
 
+    /// \brief Copy constructor.
+    ///
+    /// This copy constructor manages the internal libical objects.
     ICalendar(const ICalendar& other);
-        ///< Copy constructor.
 
+    /// \brief Assignment.
+    ///
+    /// This copy constructor manages the internal libical objects.
     ICalendar& operator = (ICalendar other);
-        ///< Assignment.
 
+    /// \brief Frees the internal  memory.
+    ///
+    /// This copy constructor manages the internal libical objects.
     virtual ~ICalendar();
-        ///< Frees the internal icalcomponent* if it was allocated.
 
+    /// \brief Check to see if the calendar is loaded.
+    ///
+    /// When the calendar is created with a default constructor or when a
+    /// load or parse operation has failed, this method will return false.
+    ///
+    /// \returns true iff a valid icalcomponent* is allocated.
     bool isLoaded() const;
-        ///< Returns true iff a valid icalcomponent* is allocated.
-        ///< When the calendar is created with a default constructor or when a
-        ///< load or parse operation has failed, this method will return false.
 
+    /// \brief Sets the URI for the ICalendar file / url (e.g. *.ics) path.
+    ///
+    /// The uri can be specify a remote location
+    /// (e.g. https://example.com/cal.ics) or can be specified as a
+    /// local file (e.g. basic.ics).  Local files without an absolute
+    /// path will be located relative to the `bin/data` directory.
+    /// The file must conform to the RFC 2445 specification.
+    ///
+    /// \param uri the URI to set.
     void setURI(const std::string& uri);
-        ///< Sets the URI for the ICalendar file / url (e.g. *.ics) path.
-        ///< The uri can be specify a remote location
-        ///< (e.g. https://example.com/cal.ics) or can be specified as a
-        ///< local file (e.g. basic.ics).  Local files without an absolute
-        ///< path will be located relative to the `bin/data` directory.
-        ///< The file must conform to the RFC 2445 specification.
 
+    /// \returns the URI for the ICalendar file.  If none is set, the returned
+    /// Poco::URI will be empty.
     Poco::URI getURI() const;
-        ///< Returns the URI for the ICalendar file.
-        ///< If none is set, the returned Poco::URI will be empty.
 
+    /// \brief Set the auto update interval.
+    ///
+    /// Auto updates will attempt to reload the last URI loaded.
+    /// If no URI has been loaded, no auto updates will be attempted.
+    /// Auto update is disabled if the interval is set to 0.
+    ///
+    /// \param the automatic refresh interval in milliseconds.
     void setAutoRefreshInterval(unsigned long long autoRefreshInterval);
-        ///< Set the auto update interval.
-        ///< Auto updates will attempt to reload the last URI loaded.
-        ///< If no URI has been loaded, no auto updates will be attempted.
-        ///< Auto update is disabled if the interval is set to 0.
 
+    /// \returns Returns the number of milliseconds in the refresh interval.
+    /// or 0 if auto refresh is disabled.
     unsigned long long getAutoRefreshInterval() const;
-        ///< Returns the number of milliseconds in the refresh interval.
-        ///< Returns 0 if auto refresh is disabled.
 
+    /// \brief Loads data from a text buffer containing an icalendar file.
+    /// The buffered data must conform to the RFC 2445 specification.
+    ///If the user is manually parsing a buffer (as opposed to using
+    /// a URI and auto refresh interval, the user must be certain to
+    /// maintain thread safety.  Additionally, the user must disable
+    /// auto refresh by setting the URI to an empty string and / or
+    /// setting the auto update interval to 0.
+    /// param buffer the buffer containing icalendar data to parse.
+    /// \returns true iff successful.
     bool parse(const ofBuffer& buffer);
-        ///< Loads data from a text buffer containing an icalendar file.
-        ///< The buffered data must conform to the RFC 2445 specification.
-        ///< If the user is manually parsing a buffer (as opposed to using
-        ///< a URI and auto refresh interval, the user must be certain to
-        ///< maintain thread safety.  Additionally, the user must disable
-        ///< auto refresh by setting the URI to an empty string and / or
-        ///< setting the auto update interval to 0.
 
+    /// \returns the calendar's product id
+    /// (e.g. -//Google Inc//Google Calendar 70.9054//EN)
+    /// or an empty std::string if no PRODID field exists.
     std::string getProductID() const;
-        ///< Returns the calendar's product id
-        ///< (e.g. -//Google Inc//Google Calendar 70.9054//EN)
-        ///< or an empty std::string if no PRODID field exists.
 
+    /// \returns the calendar's icalendar version number.
     std::string getVersion() const;
-        ///< Returns the calendar's icalendar version number.
 
+    /// \returns the name of the calendar by examining the X-WR-CALNAME
+    /// field or an empty std::string if no X-WR-CALNAME field exists.
+    /// This extended field is not part of the RFC 2445
+    /// specification, but used by Google Calendar.
     std::string getName() const;
-        ///< Returns the name of the calendar by examining the X-WR-CALNAME
-        ///< field or an empty std::string if no X-WR-CALNAME field exists.
-        ///< This extended field is not part of the RFC 2445
-        ///< specification, but used by Google Calendar.
 
+    /// \returns the name of the calendar by examining the X-WR-CALDESC
+    /// field or an empty std::string if no X-WR-CALDESC field exists.
+    /// This extended field is not part of the RFC 2445
+    /// specification, but used by Google Calendar.
     std::string getDescription() const;
-        ///< Returns the name of the calendar by examining the X-WR-CALDESC
-        ///< field or an empty std::string if no X-WR-CALDESC field exists.
-        ///< This extended field is not part of the RFC 2445
-        ///< specification, but used by Google Calendar.
 
+    /// \returns the value of the CALSCALE field or an empty std::string
+    /// if no CALSCALE tag exists.
     std::string getScale() const;
-        ///< Returns the value of the CALSCALE field or an empty std::string
-        ///< if no CALSCALE tag exists.
 
+    /// \returns the number of VEVENT elements in the calendar.
     std::size_t getNumEvents() const;
-        ///< Returns the number of VEVENT elements in the calendar.
 
+    /// \returns the most recent LAST-MODIFIED tag from all events.
+    /// If no LAST-MODIFIED tag exists, returns Poco::Timestamp(0).
     Poco::Timestamp getLastModified() const;
-        ///< Returns the most recent LAST-MODIFIED tag from all events.
-        ///< If no LAST-MODIFIED tag exists, returns Poco::Timestamp(0).
 
-//    bool getEventByUID(const std::string& uid, ICalendarEvent& event) const;
 //        ///< Returns true iff an event with a UID matching uid is found.  If true
 //        ///< the first matching event will be assigned to the event argument.
 //        ///< Returns false if a matching event is not found.
+//    bool getEventByUID(const std::string& uid, ICalendarEvent& event) const;
 
+    /// \returns all calendar events.
     Events getEvents() const;
-        ///< Returns all calendar events.
 
+    /// \returns all events that have some overlap with the given range.
+    /// All event recurrences are checked for overlap.
     Events getEvents(const Interval& interval) const;
-        ///< Returns all events that have some overlap with the given range.
-        ///< All event recurrences are checked for overlap.
 
+    /// \returns all events that contain the given timestamp.
+    /// All event recurrences are checked for overlap.
     Events getEvents(const Poco::Timestamp& timestamp) const;
-        ///< Returns all events that contain the given timestamp.
-        ///< All event recurrences are checked for overlap.
 
+    /// \returns all event instances that have some
+    /// overlap with the given range.
     EventInstances getEventInstances(const Interval& interval) const;
-        ///< Returns all event instances that have some
-        ///< overlap with the given range.
 
+    /// \returns all event instances that contain the given timestamp.
     EventInstances getEventInstances(const Poco::Timestamp& timestamp) const;
-        ///< Returns all event instances that contain
-        ///< the given timestamp.
 
+    /// \returns a pointer the underlying libicalcomponent.
     icalcomponent* getComponent();
-        ///< Returns the underlying libicalcomponent.
 
+    /// \returns a pointer to the the underlying libicalcomponent.
     icalcomponent* getComponent() const;
-        ///< Returns the underlying libicalcomponent.
 
+    /// \brief Passes the internal icalcomponent text to the output stream.
+    /// (e.g. std::cout << myCalendar << std::endl will dump the
+    /// calendar to the standard output as a RFC 2445 icalendar string).
 	friend std::ostream& operator << (std::ostream& os, const ICalendar& vec);
-        ///< Passes the internal icalcomponent text to the output stream.
-        ///< (e.g. std::cout << myCalendar << std::endl will dump the
-        ///< calendar to the standard output as a RFC 2445 icalendar string).
 
     static SharedPtr makeShared(const std::string& uri,
                                 unsigned long long autoRefreshInterval = 0)
@@ -187,34 +204,38 @@ public:
         return SharedPtr(new ICalendar(uri, autoRefreshInterval));
     }
 
+    static const Poco::Timespan DEFAULT_UPDATE_INTERVAL;
+        ///< The default update interval in microseconds for updating the watch.
+
 private:
     icalcomponent* _pICalendar;
-        ///< The underlying libical representation of the calendar.
+        ///< \brief The underlying libical representation of the calendar.
         ///< The C++ wrapper manages the memory internally.
 
     Poco::URI _uri;
-        ///< The URI of the store.
+        ///< \brief The URI of the store.
 
     Poco::Timer _autoUpdateTimer;
-        ///< A threaded timer to
-
-    void update(ofEventArgs& args);
-        ///< A callback for the ofApp to keep everything in the
-        ///< main thread.  Is automatically registered and unregistered
-        ///< upon ICalendar construction and destruction.
-
-    void onAutoUpdate(Poco::Timer& timer);
-        ///< onUpdate is called when the calendar is refreshed
+        ///< \brief A threaded timer to
 
     ofBuffer _calendarBuffer;
-        ///< A string buffer to hold the auto-refreshed ICalendar buffer.
+        ///< \brief A string buffer to hold the auto-refreshed ICalendar buffer.
 
     mutable ofMutex _mutex;
         ///< The mutex used to prevent simultaneous calls to parse.
 
+    /// \brief A callback for the ofApp to keep everything in the main thread.
+    ///
+    /// Is automatically registered and unregistered upon ICalendar construction
+    /// and destruction.
+    void update(ofEventArgs& args);
 
+    /// \brief onUpdate is called when the calendar is refreshed.
+    /// \param timer is the poco timer that was used.
+    void onAutoUpdate(Poco::Timer& timer);
+
+    /// \brief Loads a URI to a string
     bool loadURI(const Poco::URI& uri, ofBuffer& buffer);
-        ///< loads a URI to a string
 
 };
 

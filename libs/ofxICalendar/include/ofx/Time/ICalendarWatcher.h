@@ -39,41 +39,47 @@ namespace ofx {
 namespace Time {
 
 
+/// \brief A Watcher watches a given Calendar for changes.
+///
+/// Additionally it provides events for ICalendarEvent beginnings and endings.
+/// These events can be used to trigger any behavior in the
+/// ICalendarWatcherEvent listener.
 class ICalendarWatcher
-    // A Watcher watches a given Calendar for changes.  Additionally
-    // it provides events for ICalendarEvent beginnings and endings.
-    // These events can be used to trigger any behavior in the
-    // ICalendarWatcherEvent listener.
 {
 public:
+    /// \brief A shared pointer.
     typedef std::shared_ptr<ICalendarWatcher> SharedPtr;
-        ///< A shared pointer.
 
+    /// \brief Creates a Watcher.
     ICalendarWatcher(ICalendar::SharedPtr calendar);
-        ///< Creates a Watcher.
 
+    /// \brief Destroys the watcher.
     virtual ~ICalendarWatcher();
-        ///< Destroys a watcher.
 
+    /// \brief Sets the update interval in milliseconds.
+    /// \param updateInterval the update interval in milliseconds.
     void setUpdateInterval(unsigned long long updateInterval);
-        ///< Sets the update interval in milliseconds.
 
+    /// \returns the current update interval in milliseconds.
     unsigned long long getUpdateInterval() const;
-        ///< Returns the current update interval in milliseconds.
 
+    /// \brief A utility method for registering a ListenerClass to listen
+    /// for ICalendarWatcherEvents.
+    ///
+    /// The registering class must implement all of the following callback methods:
+    ///     void ListenerClass::onCalendarWatcherEventAdded(const ICalendarWatcherEventArgs& args);
+    ///     void ListenerClass::onCalendarWatcherEventRemoved(const ICalendarWatcherEventArgs& args);
+    ///     void ListenerClass::onCalendarWatcherEventModified(const ICalendarWatcherEventArgs& args);
+    ///     void ListenerClass::onCalendarWatcherEventStarted(const ICalendarWatcherEventArgs& args);
+    ///     void ListenerClass::onCalendarWatcherEventEnded(const ICalendarWatcherEventArgs& args);
+    ///     void ListenerClass::onCalendarWatcherError(const Poco::Exception& args);
+    /// Users interested in custom callback names should manually register
+    /// callbacks for specific events using the ofAddListener() method.
+    /// \param listener a pointer to the listener class that implements
+    /// the callback methods.
+    /// \param order The event callback order.
     template<class ListenerClass>
     void registerAllEvents(ListenerClass* listener, int order = OF_EVENT_ORDER_AFTER_APP)
-        ///< A utility method for registering a ListenerClass to listen
-        ///< for ICalendarWatcherEvents. The registering class must implement
-        ///< all of the following callback methods:
-        ///<     void ListenerClass::onCalendarWatcherEventAdded(const ICalendarWatcherEventArgs& args);
-        ///<     void ListenerClass::onCalendarWatcherEventRemoved(const ICalendarWatcherEventArgs& args);
-        ///<     void ListenerClass::onCalendarWatcherEventModified(const ICalendarWatcherEventArgs& args);
-        ///<     void ListenerClass::onCalendarWatcherEventStarted(const ICalendarWatcherEventArgs& args);
-        ///<     void ListenerClass::onCalendarWatcherEventEnded(const ICalendarWatcherEventArgs& args);
-        ///<     void ListenerClass::onCalendarWatcherError(const Poco::Exception& args);
-        ///< Users interested in custom callback names should manually register
-        ///< callbacks for specific events using the ofAddListener() method.
     {
         ofAddListener(events.onEventAdded, listener, &ListenerClass::onCalendarWatcherEventAdded, order);
         ofAddListener(events.onEventRemoved, listener, &ListenerClass::onCalendarWatcherEventRemoved, order);
@@ -83,19 +89,22 @@ public:
         ofAddListener(events.onError, listener, &ListenerClass::onCalendarWatcherError, order);
     }
 
+    /// \brief A utility method for unregistering a ListenerClass to listen
+    /// for ICalendarWatcherEvents.
+    ///
+    /// The registering class must implement all of the following callback methods:
+    ///     void ListenerClass::onCalendarWatcherEventAdded(const ICalendarWatcherEventArgs& args);
+    ///     void ListenerClass::onCalendarWatcherEventRemoved(const ICalendarWatcherEventArgs& args);
+    ///     void ListenerClass::onCalendarWatcherEventModified(const ICalendarWatcherEventArgs& args);
+    ///     void ListenerClass::onCalendarWatcherEventStarted(const ICalendarWatcherEventArgs& args);
+    ///     void ListenerClass::onCalendarWatcherEventEnded(const ICalendarWatcherEventArgs& args);
+    ///     void ListenerClass::onCalendarWatcherError(const Poco::Exception& args);
+    /// Users interested in custom callback names should manually register
+    /// callbacks for specific events using the ofRemoveListener() method.
+    /// \param listener a pointer to the listener class that implements
+    /// the callback methods.
     template<class ListenerClass>
     void unregisterAllEvents(ListenerClass* listener)
-        ///< A utility method for unregistering a ListenerClass to listen
-        ///< for ICalendarWatcherEvents. The registering class must implement
-        ///< all of the following callback methods:
-        ///<     void ListenerClass::onCalendarWatcherEventAdded(const ICalendarWatcherEventArgs& args);
-        ///<     void ListenerClass::onCalendarWatcherEventRemoved(const ICalendarWatcherEventArgs& args);
-        ///<     void ListenerClass::onCalendarWatcherEventModified(const ICalendarWatcherEventArgs& args);
-        ///<     void ListenerClass::onCalendarWatcherEventStarted(const ICalendarWatcherEventArgs& args);
-        ///<     void ListenerClass::onCalendarWatcherEventEnded(const ICalendarWatcherEventArgs& args);
-        ///<     void ListenerClass::onCalendarWatcherError(const Poco::Exception& args);
-        ///< Users interested in custom callback names should manually register
-        ///< callbacks for specific events using the ofRemoveListener() method.
     {
         ofRemoveListener(events.onEventAdded, listener, &ListenerClass::onCalendarWatcherEventAdded);
         ofRemoveListener(events.onEventRemoved, listener, &ListenerClass::onCalendarWatcherEventRemoved);
@@ -106,7 +115,8 @@ public:
     }
 
     ICalendarWatcherEvents events;
-        ///< A class containing all events for this watcher.
+        ///< \brief A class containing all events for this watcher.
+        ///<
         ///< Listener classes can call the utility methods
         ///< registerAllEvents() or unregisterAllEvents() to
         ///< register callbacks or manually register for individual
