@@ -36,22 +36,26 @@ const Poco::Timespan ICalendar::DEFAULT_UPDATE_INTERVAL = 0;
 ICalendar::ICalendar(const std::string& uri, unsigned long long autoRefreshInterval):
     _pICalendar(0),
     _uri(""),
-    _autoUpdateTimer(0, autoRefreshInterval),
+//    _autoUpdateTimer(0, autoRefreshInterval),
+    _nextUpdate(0),
+    _autoUpdateInterval(autoRefreshInterval),
     _calendarBuffer("")
 {
     ofAddListener(ofEvents().update, this, &ICalendar::update);
 
     setURI(uri);
 
-    _autoUpdateTimer.start(Poco::TimerCallback<ICalendar>(*this, &ICalendar::onAutoUpdate));
+//    _autoUpdateTimer.start(Poco::TimerCallback<ICalendar>(*this, &ICalendar::onAutoUpdate));
 }
 
 
 ICalendar::ICalendar(const ICalendar& other):
     _pICalendar(0),
     _uri(other._uri),
-    _autoUpdateTimer(other._autoUpdateTimer.getStartInterval(),
-                     other._autoUpdateTimer.getPeriodicInterval()),
+    _autoUpdateInterval(other._autoUpdateInterval),
+//
+//    _autoUpdateTimer(other._autoUpdateTimer.getStartInterval(),
+//                     other._autoUpdateTimer.getPeriodicInterval()),
     _calendarBuffer(other._calendarBuffer)
 {
     if(other._pICalendar)
@@ -109,19 +113,22 @@ Poco::URI ICalendar::getURI() const
 
 void ICalendar::setAutoRefreshInterval(unsigned long long autoRefreshInterval)
 {
-    if (0 == _autoUpdateTimer.getPeriodicInterval())
-    {
-        _autoUpdateTimer.stop();
-        _autoUpdateTimer.start(Poco::TimerCallback<ICalendar>(*this, &ICalendar::onAutoUpdate));
-    }
+    _autoUpdateInterval = autoRefreshInterval;
 
-    _autoUpdateTimer.restart(autoRefreshInterval);
+//    if (0 == _autoUpdateTimer.getPeriodicInterval())
+//    {
+//        _autoUpdateTimer.stop();
+//        _autoUpdateTimer.start(Poco::TimerCallback<ICalendar>(*this, &ICalendar::onAutoUpdate));
+//    }
+//
+//    _autoUpdateTimer.restart(autoRefreshInterval);
 }
 
 
 unsigned long long ICalendar::getAutoRefreshInterval() const
 {
-    return _autoUpdateTimer.getPeriodicInterval();
+//    return _autoUpdateTimer.getPeriodicInterval();
+    return _autoUpdateInterval;
 }
 
 
@@ -544,6 +551,7 @@ icalcomponent* ICalendar::getComponent() const
 void ICalendar::update(ofEventArgs& args)
 {
     ofScopedLock lock(_mutex);
+
     if (_calendarBuffer.size() > 0)
     {
         parse(_calendarBuffer);
@@ -552,19 +560,19 @@ void ICalendar::update(ofEventArgs& args)
 }
 
 
-void ICalendar::onAutoUpdate(Poco::Timer& timer)
-{
-    if (!_uri.empty())
-    {
-        ofBuffer buffer;
-
-        if (loadURI(_uri, buffer))
-        {
-            ofScopedLock lock(_mutex);
-            _calendarBuffer = buffer; // lock while we set the buffer
-        }
-    }
-}
+//void ICalendar::onAutoUpdate(Poco::Timer& timer)
+//{
+//    if (!_uri.empty())
+//    {
+//        ofBuffer buffer;
+//
+//        if (loadURI(_uri, buffer))
+//        {
+//            ofScopedLock lock(_mutex);
+//            _calendarBuffer = buffer; // lock while we set the buffer
+//        }
+//    }
+//}
 
 
 bool ICalendar::loadURI(const Poco::URI& uri, ofBuffer& buffer)
@@ -572,8 +580,17 @@ bool ICalendar::loadURI(const Poco::URI& uri, ofBuffer& buffer)
     if (_uri.getScheme() == "http" || _uri.getScheme() == "https")
     {
         ofHttpResponse response = ofLoadURL(_uri.toString());
-        buffer = response.data;
-        return true;
+
+        if (200 == response.status)
+        {
+            buffer = response.data;
+            return true;
+        }
+        else
+        {
+            ofLogError("ICalendar::loadURI()") << "URI: " << uri.toString() << ": " << response.error;
+            return false;
+        }
     }
     else if(_uri.getScheme() == "file" || _uri.getScheme().empty())
     {

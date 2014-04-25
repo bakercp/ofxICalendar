@@ -38,6 +38,9 @@ void ofApp::setup()
     // update it every minute
     calendar = ICalendar::makeShared("basic.ics", 60000);
 
+    calendar->reload();
+    calendar->startThread();
+
     watcher = ICalendarWatcher::makeShared(calendar);
     
     watcher->registerAllEvents(this); // register this class for all events

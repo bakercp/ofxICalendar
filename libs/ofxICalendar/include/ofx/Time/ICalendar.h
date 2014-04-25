@@ -51,7 +51,9 @@ namespace Time {
 
     
 /// \brief The ICalendar class implements the RFC 2445 icalendar format.
-class ICalendar: public ICalendarInterface
+class ICalendar:
+    public ICalendarInterface,
+    public ofThread
 {
 public:
     /// \brief A shared pointer typedef.
@@ -207,6 +209,36 @@ public:
     static const Poco::Timespan DEFAULT_UPDATE_INTERVAL;
         ///< The default update interval in microseconds for updating the watch.
 
+    virtual void threadedFunction()
+    {
+        while (isThreadRunning())
+        {
+            Poco::Timestamp now;
+
+            if (now >= _nextUpdate)
+            {
+                reload();
+                _nextUpdate = now + _autoUpdateInterval * Poco::Timespan::MILLISECONDS;
+            }
+
+            sleep(100);
+        }
+    }
+
+    void reload()
+    {
+        if (!_uri.empty())
+        {
+            ofBuffer buffer;
+
+            if (loadURI(_uri, buffer))
+            {
+                ofScopedLock lock(_mutex);
+                _calendarBuffer = buffer; // lock while we set the buffer
+            }
+        }
+    }
+
 private:
     icalcomponent* _pICalendar;
         ///< \brief The underlying libical representation of the calendar.
@@ -215,8 +247,11 @@ private:
     Poco::URI _uri;
         ///< \brief The URI of the store.
 
-    Poco::Timer _autoUpdateTimer;
-        ///< \brief A threaded timer to
+    Poco::Timestamp _nextUpdate;
+        ///< \brief A record of the nextupdate;
+
+    unsigned long long _autoUpdateInterval;
+        ///< \brief An automatic update interval.
 
     ofBuffer _calendarBuffer;
         ///< \brief A string buffer to hold the auto-refreshed ICalendar buffer.
@@ -232,7 +267,7 @@ private:
 
     /// \brief onUpdate is called when the calendar is refreshed.
     /// \param timer is the poco timer that was used.
-    void onAutoUpdate(Poco::Timer& timer);
+//    void onAutoUpdate(Poco::Timer& timer);
 
     /// \brief Loads a URI to a string
     bool loadURI(const Poco::URI& uri, ofBuffer& buffer);
