@@ -32,10 +32,6 @@ void ofApp::setup()
     ofEnableAlphaBlending();
     ofSetFrameRate(30);
 
-    ofColor currentColor = ofColor::black;
-    float currentSpeed = 0;
-
-
     // currently basic.ics is being downloaded from here
     // "https://www.google.com/calendar/ical/christopherbaker.net_91ul9n5dq2b6pkmin511q3bq14%40group.calendar.google.com/public/basic.ics";
 
