@@ -26,7 +26,7 @@
 #include "ofApp.h"
 
 
-//------------------------------------------------------------------------------
+
 void ofApp::setup()
 {
     ofEnableAlphaBlending();
@@ -49,7 +49,7 @@ void ofApp::setup()
 
 }
 
-//------------------------------------------------------------------------------
+
 void ofApp::draw()
 {
     ofBackgroundGradient(ofColor::white, ofColor::black);
@@ -83,27 +83,7 @@ void ofApp::draw()
     ofDrawBitmapString("speed: " + ofToString(currentSpeed), 20, ofGetHeight() - 15);
 }
 
-//------------------------------------------------------------------------------
-void ofApp::mouseMoved(int x, int y)
-{
-}
 
-//------------------------------------------------------------------------------
-void ofApp::mouseDragged(int x, int y, int button)
-{
-}
-
-//------------------------------------------------------------------------------
-void ofApp::mousePressed(int x, int y, int button)
-{
-}
-
-//------------------------------------------------------------------------------
-void ofApp::mouseReleased(int x, int y, int button)
-{
-}
-
-//------------------------------------------------------------------------------
 void ofApp::gotMessage(ofMessage msg)
 {
     messages.push_front(msg.message);
@@ -113,6 +93,7 @@ void ofApp::gotMessage(ofMessage msg)
         messages.pop_back(); // throw away the oldest.
     }
 }
+
 
 void ofApp::processInstance(const ICalendarEventInstance& instance)
 {
@@ -155,7 +136,6 @@ void ofApp::processInstance(const ICalendarEventInstance& instance)
 }
 
 
-//------------------------------------------------------------------------------
 void ofApp::onCalendarWatcherEventAdded(const ICalendarEventInstance& instance)
 {
     ofSendMessage("ADDED: " + instance.getEvent().getSummary() );
@@ -163,14 +143,14 @@ void ofApp::onCalendarWatcherEventAdded(const ICalendarEventInstance& instance)
     processInstance(instance);
 }
 
-//------------------------------------------------------------------------------
+
 void ofApp::onCalendarWatcherEventRemoved(const ICalendarEventInstance& instance)
 {
     // note, there is a good chance this event will be invalid
     ofSendMessage("REMOVED: " + instance.getEvent().getUID());
 }
 
-//------------------------------------------------------------------------------
+
 void ofApp::onCalendarWatcherEventModified(const ICalendarEventInstance& instance)
 {
     ofSendMessage("MODIFIED: " + instance.getEvent().getSummary() );
@@ -178,7 +158,7 @@ void ofApp::onCalendarWatcherEventModified(const ICalendarEventInstance& instanc
     processInstance(instance);
 }
 
-//------------------------------------------------------------------------------
+
 void ofApp::onCalendarWatcherEventStarted(const ICalendarEventInstance& instance)
 {
     ofSendMessage("STARTED: " + instance.getEvent().getSummary() );
@@ -186,13 +166,13 @@ void ofApp::onCalendarWatcherEventStarted(const ICalendarEventInstance& instance
     processInstance(instance);
 }
 
-//------------------------------------------------------------------------------
+
 void ofApp::onCalendarWatcherEventEnded(const ICalendarEventInstance& instance)
 {
     ofSendMessage("ENDED: " + instance.getEvent().getSummary() );
 }
 
-//------------------------------------------------------------------------------
+
 void ofApp::onCalendarWatcherError(const Poco::Exception& exception)
 {
     ofSendMessage("ERROR: " + exception.displayText());
