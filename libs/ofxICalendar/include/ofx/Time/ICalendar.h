@@ -207,6 +207,21 @@ public:
     static const Poco::Timespan DEFAULT_UPDATE_INTERVAL;
         ///< The default update interval in microseconds for updating the watch.
 
+    bool reload()
+    {
+        if (!_uri.empty())
+        {
+            ofBuffer buffer;
+
+            if (loadURI(_uri, buffer))
+            {
+                //                ofScopedLock lock(_mutex);
+                _calendarBuffer = buffer; // lock while we set the buffer
+            }
+        }
+
+    }
+
 private:
     icalcomponent* _pICalendar;
         ///< \brief The underlying libical representation of the calendar.
@@ -215,8 +230,8 @@ private:
     Poco::URI _uri;
         ///< \brief The URI of the store.
 
-    Poco::Timer _autoUpdateTimer;
-        ///< \brief A threaded timer to
+    unsigned long long _autoUpdateInterval;
+        ///< \brief An automatic update interval.
 
     ofBuffer _calendarBuffer;
         ///< \brief A string buffer to hold the auto-refreshed ICalendar buffer.
@@ -232,7 +247,7 @@ private:
 
     /// \brief onUpdate is called when the calendar is refreshed.
     /// \param timer is the poco timer that was used.
-    void onAutoUpdate(Poco::Timer& timer);
+//    void onAutoUpdate(Poco::Timer& timer);
 
     /// \brief Loads a URI to a string
     bool loadURI(const Poco::URI& uri, ofBuffer& buffer);
