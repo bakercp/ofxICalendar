@@ -70,7 +70,7 @@ public:
 
     /// \brief Creates a calendar with the given uri.
     /// \param uri the uri of the calnedar.
-    /// \param the automatic refresh interval.
+    /// \param autoRefreshInterval the automatic refresh interval.
     ICalendar(const std::string& uri, unsigned long long autoRefreshInterval = 0);
 
     /// \brief Copy constructor.
@@ -107,6 +107,7 @@ public:
     /// \param uri the URI to set.
     void setURI(const std::string& uri);
 
+    /// \brief get the URI for the ICalendar file.
     /// \returns the URI for the ICalendar file.  If none is set, the returned
     /// Poco::URI will be empty.
     Poco::URI getURI() const;
@@ -117,21 +118,24 @@ public:
     /// If no URI has been loaded, no auto updates will be attempted.
     /// Auto update is disabled if the interval is set to 0.
     ///
-    /// \param the automatic refresh interval in milliseconds.
+    /// \param autoRefreshInterval automatic refresh interval in milliseconds.
     void setAutoRefreshInterval(unsigned long long autoRefreshInterval);
 
+    /// \brief Get the auto refresh interval.
     /// \returns Returns the number of milliseconds in the refresh interval.
     /// or 0 if auto refresh is disabled.
     unsigned long long getAutoRefreshInterval() const;
 
     /// \brief Loads data from a text buffer containing an icalendar file.
+    ///
     /// The buffered data must conform to the RFC 2445 specification.
-    ///If the user is manually parsing a buffer (as opposed to using
+    /// If the user is manually parsing a buffer (as opposed to using
     /// a URI and auto refresh interval, the user must be certain to
     /// maintain thread safety.  Additionally, the user must disable
     /// auto refresh by setting the URI to an empty string and / or
     /// setting the auto update interval to 0.
-    /// param buffer the buffer containing icalendar data to parse.
+    ///
+    /// \param buffer the buffer containing icalendar data to parse.
     /// \returns true iff successful.
     bool parse(const ofBuffer& buffer);
 
@@ -159,9 +163,11 @@ public:
     /// if no CALSCALE tag exists.
     std::string getScale() const;
 
+    /// \brief Get the number of VEVENT elements in the calendar.
     /// \returns the number of VEVENT elements in the calendar.
     std::size_t getNumEvents() const;
 
+    /// \brief Get the most recent LAST-MODIFIED tag from all events.
     /// \returns the most recent LAST-MODIFIED tag from all events.
     /// If no LAST-MODIFIED tag exists, returns Poco::Timestamp(0).
     Poco::Timestamp getLastModified() const;
@@ -182,82 +188,96 @@ public:
     /// All event recurrences are checked for overlap.
     Events getEvents(const Poco::Timestamp& timestamp) const;
 
-    /// \returns all event instances that have some
-    /// overlap with the given range.
+    /// \returns all event instances that overlap with the given range.
     EventInstances getEventInstances(const Interval& interval) const;
 
     /// \returns all event instances that contain the given timestamp.
     EventInstances getEventInstances(const Poco::Timestamp& timestamp) const;
 
+    /// \brief Get the raw icalcomponent pointer.
     /// \returns a pointer the underlying libicalcomponent.
     icalcomponent* getComponent();
 
+    /// \brief Get the raw icalcomponent pointer.
     /// \returns a pointer to the the underlying libicalcomponent.
     icalcomponent* getComponent() const;
 
     /// \brief Passes the internal icalcomponent text to the output stream.
+    ///
     /// (e.g. std::cout << myCalendar << std::endl will dump the
     /// calendar to the standard output as a RFC 2445 icalendar string).
 	friend std::ostream& operator << (std::ostream& os, const ICalendar& vec);
 
+    /// \brief Make a shared instance.
     static SharedPtr makeShared(const std::string& uri,
                                 unsigned long long autoRefreshInterval = 0)
     {
         return SharedPtr(new ICalendar(uri, autoRefreshInterval));
     }
 
+    /// \brief The default update interval updating the watch.
     static const Poco::Timespan DEFAULT_UPDATE_INTERVAL;
-        ///< The default update interval in microseconds for updating the watch.
 
+    /// \brief The thread function used for auto updates.
     virtual void threadedFunction()
     {
         while (isThreadRunning())
         {
             Poco::Timestamp now;
 
-            if (now >= _nextUpdate)
+            if (_autoUpdateInterval > 0 && now >= _nextUpdate)
             {
                 reload();
                 _nextUpdate = now + _autoUpdateInterval * Poco::Timespan::MILLISECONDS;
             }
 
-            sleep(100);
+            sleep(1000);
         }
     }
 
+    /// \brief Reload the calendar from the URI.
     void reload()
     {
         if (!_uri.empty())
         {
+            // cout << "reloading calendar." << endl;
             ofBuffer buffer;
 
             if (loadURI(_uri, buffer))
             {
+                //cout << "success!." << endl;
+
                 ofScopedLock lock(_mutex);
                 _calendarBuffer = buffer; // lock while we set the buffer
+            }
+            else
+            {
+                //cout << "not successsful." << endl;
+
             }
         }
     }
 
 private:
+    /// \brief The underlying libical representation of the calendar.
+    ///
+    /// The C++ wrapper manages the memory internally.
     icalcomponent* _pICalendar;
-        ///< \brief The underlying libical representation of the calendar.
-        ///< The C++ wrapper manages the memory internally.
 
+    /// \brief The URI of the store.
     Poco::URI _uri;
-        ///< \brief The URI of the store.
 
+    /// \brief A record of the nextupdate;
     Poco::Timestamp _nextUpdate;
-        ///< \brief A record of the nextupdate;
 
+    /// \brief An automatic update interval.
     unsigned long long _autoUpdateInterval;
-        ///< \brief An automatic update interval.
 
+    /// \brief A string buffer to hold the auto-refreshed ICalendar buffer.
     ofBuffer _calendarBuffer;
-        ///< \brief A string buffer to hold the auto-refreshed ICalendar buffer.
 
+    /// \brief The mutex used to prevent simultaneous calls to parse.
     mutable ofMutex _mutex;
-        ///< The mutex used to prevent simultaneous calls to parse.
 
     /// \brief A callback for the ofApp to keep everything in the main thread.
     ///
@@ -265,9 +285,9 @@ private:
     /// and destruction.
     void update(ofEventArgs& args);
 
-    /// \brief onUpdate is called when the calendar is refreshed.
-    /// \param timer is the poco timer that was used.
-//    void onAutoUpdate(Poco::Timer& timer);
+    // \brief onUpdate is called when the calendar is refreshed.
+    // \param timer is the poco timer that was used.
+    // void onAutoUpdate(Poco::Timer& timer);
 
     /// \brief Loads a URI to a string
     bool loadURI(const Poco::URI& uri, ofBuffer& buffer);

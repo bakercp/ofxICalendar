@@ -33,8 +33,7 @@ namespace ofx {
 namespace Time {
 
     
-/// \brief The ICalendarInteface class provides access to underlying
-/// libicalcomponent pointers.
+/// \brief The provides access to underlying libicalcomponent pointers.
 class ICalendarInterface
 {
 public:

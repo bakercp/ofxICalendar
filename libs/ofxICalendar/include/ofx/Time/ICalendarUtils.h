@@ -40,16 +40,22 @@ namespace ofx {
 namespace Time {
 
 
+/// \brief A collection of utilities for ICalendar manipulations.
 class ICalendarUtils
-    /// Utils contains a collection of utilities for simplifying interactions
-    /// between openFrameworks, Poco and libical.
 {
 public:
+    /// \brief Convert a time in icaltimetype format to as Poco::Timestamp.
+    /// \param time a timein icaltimetype format.
+    /// \param timestamp the timestamp to be filled after conversion.
     /// \returns true iff the passed icaltimetype is both non-null
     /// and valid.  A valid time is assigned to the Poco::Timestamp.
     static bool timeToTimestamp(struct icaltimetype time,
                                 Poco::Timestamp& timestamp);
 
+    /// \brief Get the value of an X-property extension via key.
+    /// \param pComponent a pointer to the icalendar component.
+    /// \param key the value of the extension value's key.
+    /// \param value the value to be filled upon success.
     /// \returns true iff the icalendar X property defined by the key
     /// was found icalcomponent.  A key with a valid value is assigned
     /// to the passed value.

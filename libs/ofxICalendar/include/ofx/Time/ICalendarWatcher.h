@@ -51,6 +51,7 @@ public:
     typedef std::shared_ptr<ICalendarWatcher> SharedPtr;
 
     /// \brief Creates a Watcher.
+    /// \param calendar A shared pointer to a calendar to watch.
     ICalendarWatcher(ICalendar::SharedPtr calendar);
 
     /// \brief Destroys the watcher.
@@ -114,50 +115,53 @@ public:
         ofRemoveListener(events.onError, listener, &ListenerClass::onCalendarWatcherError);
     }
 
+    /// \brief A class containing all events for this watcher.
+    ///
+    /// Listener classes can call the utility methods registerAllEvents() or
+    /// unregisterAllEvents() to register callbacks or manually register for
+    /// individual events using ofAddListener() and ofRemoveListener().
     ICalendarWatcherEvents events;
-        ///< \brief A class containing all events for this watcher.
-        ///<
-        ///< Listener classes can call the utility methods
-        ///< registerAllEvents() or unregisterAllEvents() to
-        ///< register callbacks or manually register for individual
-        ///< events using ofAddListener() and ofRemoveListener().
 
+    /// \brief The default update interval for updating the watch.
     static const Poco::Timespan DEFAULT_UPDATE_INTERVAL;
-        ///< The default update interval in microseconds for updating the watch.
 
+    /// \brief Make a shared instance.
     static SharedPtr makeShared(ICalendar::SharedPtr calendar)
     {
         return SharedPtr(new ICalendarWatcher(calendar));
     }
 
 private:
+    /// \brief The calendar being watched.
     ICalendar::SharedPtr _calendar;
-        ///< The calendar being watched.
 
+    /// \brief A collection of all current watches.
     ICalendar::EventInstances _watches;
-        ///< A collection of all current watches.
 
+    /// \brief A map of the last updated times for the current watches.
     std::map<std::string, Poco::Timestamp> _watchesLastUpdated;
-        ///< A map of the last updated times for the current watches.
 
+    /// \brief The last time the watches were updated.
     Poco::Timestamp _lastUpdate;
-        ///< The last time the watches were updated.
 
+    /// \brief The timespan for updating the watches.
     Poco::Timespan _updateInterval;
-        ///< The timespan for updating the watches.
 
+    /// \brief A callback for the ofApp to keep everything in the
+    /// main thread.  Is automatically registered and unregistered
+    /// upon Watcher construction and destruction.
     void update(ofEventArgs& args);
-        ///< A callback for the ofApp to keep everything in the
-        ///< main thread.  Is automatically registered and unregistered
-        ///< upon Watcher construction and destruction.
 
+    /// \brief Manually refresh the watch. Overrides auto watcher and
+    /// updates the _lastUpdate variable.
     void refresh();
-        ///< Manually refresh the watch.  Overrides auto watcher and
-        ///< updates the _lastUpdate variable.
 
-    static bool compareUID(const ICalendarEventInstance& lhs, const ICalendarEventInstance& rhs);
-        ///< Returns true iff the left event's uid
-        ///< goes before the right event's uid.
+    /// \brief Compare two ICalendarEventInstances.
+    /// \param lhs the left hand side instance.
+    /// \param rhs the right hand side instance.
+    /// \returns true iff the left event's uid is before the right event's uid.
+    static bool compareUID(const ICalendarEventInstance& lhs,
+                           const ICalendarEventInstance& rhs);
 
 };
 

@@ -56,35 +56,37 @@ public:
     {
     }
 
+    /// \brief Called when a new in-progress event first appears to the watcher.
+    ///
+    /// This might happen when a calendar is first loaded and an event
+    /// is already in progress or when a calendar is externally updated
+    /// and the watcher sees the beginning of the event.
     ofEvent<const ICalendarEventInstance> onEventAdded;
-        ///< Called when a new in-progress event first appears to the watcher.
-        ///< This might happen when a calendar is first loaded and an event
-        ///< is already in progress, or when a calendar is externally updated
-        ///< and the watcher the beginning of the event.
 
+    /// \brief  Called when a tracked event is removed from the watcher before it ends.
+    ///
+    /// This might happen if a calendar is removed from the watch list or when
+    /// an event is externally removed from the watched calendar before its
+    /// natural end time.
     ofEvent<const ICalendarEventInstance> onEventRemoved;
-        ///< Called when a tracked event is removed from the watcher before
-        ///< it ends.  This might happen if a calendar is removed from the
-        ///< watch list or when an event is externally removed from the watched
-        ///< calendar before its natural end time.
 
+    /// \brief Called when the details of a watched in-progress event is modified externally.
+    ///
+    /// This might happen when an in-progress event is not moved, but a title,
+    /// description, or beginning or end time is modified.  If an in-progress
+    /// event is "rescheduled", thereby abuptly ending the event, the
+    /// onEventRemoved will be called rather than the onEventModified.
     ofEvent<const ICalendarEventInstance> onEventModified;
-        ///< Called when the details of a watched in-progress event is modified
-        ///< modified externally.  This might happen when an in-progress event
-        ///< is not moved, but a title, description, or beginning or end time
-        ///< is modified.  If an in-progress event is "rescheduled", thereby
-        ///< abuptly ending the event, the onEventRemoved will be called
-        ///< rather than the onEventModified.
 
+    /// \brief Called when an event in a watched calendar begins.
     ofEvent<const ICalendarEventInstance> onEventStarted;
-        ///< Called when an event in a watched calendar begins.
 
+    /// \brief Called when an event in a watched calendar ends.
     ofEvent<const ICalendarEventInstance> onEventEnded;
-        ///< Called when an event in a watched calendar ends.
 
+    /// \brief Called when an exception is passed. Currently this is not used.
     ofEvent<const Poco::Exception> onError;
-        ///< Called when an exception is passed.  Currently this is not used.
-    
+
 };
     
     
