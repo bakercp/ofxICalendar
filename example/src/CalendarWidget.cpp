@@ -30,7 +30,7 @@ CalendarWidget::CalendarWidget(ICalendar::SharedPtr calendar, const ofRectangle&
     _calendar(calendar),
     _window(window)
 {
-    _font.loadFont("automat.ttf", 6, false);
+    _font.load("automat.ttf", 6, false);
 
     // make the mapping pixel-perfect to avoid pixel rounding artifacts
     _windowTimespan = Poco::Timespan(15 * _window.getHeight() * Poco::Timespan::SECONDS);
@@ -63,7 +63,7 @@ void CalendarWidget::draw()
     ofFill();
     ofSetColor(0, 200);
 
-    ofRect(_window);
+    ofDrawRectangle(_window);
 
     std::string formatStringHourMin = "%h:%M %A";
     std::string formatStringHour = "%h:%M";
@@ -96,17 +96,17 @@ void CalendarWidget::draw()
         if (0 == minute)
         {
             ofSetColor(255, 80 * alpha);
-            ofLine(0, y, _window.getWidth(), y);
+            ofDrawLine(0, y, _window.getWidth(), y);
         }
         else if (0 == minute % 15)
         {
             ofSetColor(255, 255, 0, 80 * alpha);
-            ofLine(0, y, _window.getWidth(), y);
+            ofDrawLine(0, y, _window.getWidth(), y);
         }
         else
         {
             ofSetColor(127, 80 * alpha);
-            ofLine(0, y, _window.getWidth(), y);
+            ofDrawLine(0, y, _window.getWidth(), y);
         }
 
         std::string label = Utils::format(Poco::LocalDateTime(time), formatStringHourMinSec);
@@ -125,7 +125,7 @@ void CalendarWidget::draw()
     int y = _window.getHeight() * _windowInterval.map(_now);
 
     ofSetColor(255);
-    ofLine(0, y, _window.getWidth(), y);
+    ofDrawLine(0, y, _window.getWidth(), y);
 
     std::string label = Utils::format(Poco::LocalDateTime(_now), formatStringHourMinSec);
 
@@ -163,14 +163,14 @@ void CalendarWidget::draw()
             }
 
 
-            ofRectRounded(x, y0, 80, y1 - y0, 5);
+            ofDrawRectRounded(x, y0, 80, y1 - y0, 5);
 
             ofNoFill();
             ofSetColor(127);
-            ofRectRounded(x, y0, 80, y1 - y0, 5);
+            ofDrawRectRounded(x, y0, 80, y1 - y0, 5);
 
             ofSetColor(255);
-            ofRectRounded(x-1, y0-1, 80+2, y1 - y0+2, 5);
+            ofDrawRectRounded(x-1, y0-1, 80+2, y1 - y0+2, 5);
 
 
             std::string startLabel = Utils::format(Poco::LocalDateTime(interval.getStart()), formatStringHour);

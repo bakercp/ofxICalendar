@@ -44,6 +44,7 @@
 #include "ofURLFileLoader.h"
 #include "ofFileUtils.h"
 #include "ofEvents.h"
+#include "ofThread.h"
 
 
 namespace ofx {

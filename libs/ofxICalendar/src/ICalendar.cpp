@@ -136,7 +136,7 @@ bool ICalendar::parse(const ofBuffer& buffer)
 {
     if (buffer.size() > 0)
     {
-        icalcomponent* _pNewICalendar = icalcomponent_new_from_string(buffer.getBinaryBuffer());
+        icalcomponent* _pNewICalendar = icalcomponent_new_from_string(buffer.getData());
 
         if (_pNewICalendar)
         {
