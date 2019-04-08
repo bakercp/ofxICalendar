@@ -165,7 +165,7 @@ void CalendarWidget::draw()
             _font.drawString(startLabel,         x + 5, y0 + 20);
             _font.drawString(endLabel,           x + 5, y0 + 30);
             
-            x+= 84;
+            x += 84;
             
             if (x > _window.getWidth() - 160) x = 0;
             

@@ -17,19 +17,19 @@ void ofApp::setup()
     // "https://www.google.com/calendar/ical/christopherbaker.net_91ul9n5dq2b6pkmin511q3bq14%40group.calendar.google.com/public/basic.ics";
 
     // update it every minute
-    calendar = ICalendar::makeShared("basic.ics", 60000);
+    calendar = std::make_shared<ICalendar>("basic.ics", 60000);
 
     calendar->reload();
     calendar->startThread();
 
-    watcher = ICalendarWatcher::makeShared(calendar);
+    watcher = std::make_shared<ICalendarWatcher>(calendar);
     
     watcher->registerAllEvents(this); // register this class for all events
 
     // set up the watcher
     ofRectangle window;
     window.setFromCenter(ofGetWidth() / 2, ofGetHeight() / 2, 480, ofGetHeight()-40);
-    calendarWidget = CalendarWidget::makeShared(calendar, window);
+    calendarWidget = std::make_shared<CalendarWidget>(calendar, window);
 
 }
 

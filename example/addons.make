@@ -1,2 +1,3 @@
 ofxICalendar
+ofxPoco
 ofxTime

@@ -25,7 +25,7 @@ class CalendarWidget
 public:
     typedef std::shared_ptr<CalendarWidget> SharedPtr;
 
-    CalendarWidget(ICalendar::SharedPtr calendar, const ofRectangle& window);
+    CalendarWidget(std::shared_ptr<ICalendar> calendar, const ofRectangle& window);
 
     virtual ~CalendarWidget();
 
@@ -36,13 +36,8 @@ public:
 
     void draw();
 
-    static SharedPtr makeShared(ICalendar::SharedPtr calendar, const ofRectangle& window)
-    {
-        return SharedPtr(new CalendarWidget(calendar, window));
-    }
-
 private:
-    ICalendar::SharedPtr _calendar;
+    std::shared_ptr<ICalendar> _calendar;
     ofRectangle _window;
 
     ICalendar::EventInstances _currentEvents;

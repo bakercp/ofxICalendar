@@ -19,10 +19,10 @@ using namespace ofx::Time;
 class ofApp: public ofBaseApp
 {
 public:
-    void setup();
-    void draw();
+    void setup() override;
+    void draw() override;
 
-    void gotMessage(ofMessage msg);
+    void gotMessage(ofMessage msg) override;
 
     void onCalendarWatcherEventAdded(const ICalendarEventInstance& instance);
     void onCalendarWatcherEventRemoved(const ICalendarEventInstance& instance);
@@ -33,7 +33,7 @@ public:
 
     void processInstance(const ICalendarEventInstance& instance);
 
-    ICalendar::SharedPtr calendar;
+    std::shared_ptr<ICalendar> calendar;
     ICalendarWatcher::SharedPtr watcher;
 
     CalendarWidget::SharedPtr calendarWidget;
