@@ -122,7 +122,7 @@ void ofApp::processInstance(const ICalendarEventInstance& instance)
 
 void ofApp::onCalendarWatcherEventAdded(const ICalendarEventInstance& instance)
 {
-    ofSendMessage("ADDED: " + instance.getEvent().getSummary() );
+    ofSendMessage("ADDED: " + instance.getEvent().getSummary());
 
     processInstance(instance);
 }
