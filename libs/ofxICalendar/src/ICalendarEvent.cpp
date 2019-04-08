@@ -449,8 +449,8 @@ ICalendarEvent::Instances ICalendarEvent::getInstances(const Interval& interval)
     {
         std::vector<Interval> intervals;
 
-        struct icaltimetype start = icaltime_from_timet(interval.getStart().epochTime(), false);
-        struct icaltimetype end = icaltime_from_timet(interval.getEnd().epochTime(), false);
+        struct icaltimetype start = icaltime_from_timet_with_zone(interval.getStart().epochTime(), false, icaltimezone_get_utc_timezone());
+        struct icaltimetype end = icaltime_from_timet_with_zone(interval.getEnd().epochTime(), false, icaltimezone_get_utc_timezone());
 
         icalcomponent_foreach_recurrence(pEventComponent,
                                          start,

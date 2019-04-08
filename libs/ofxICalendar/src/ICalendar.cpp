@@ -15,13 +15,12 @@ namespace Time {
 const Poco::Timespan ICalendar::DEFAULT_UPDATE_INTERVAL = 0;
 
 
-ICalendar::ICalendar(const std::string& uri, unsigned long long autoRefreshInterval):
+ICalendar::ICalendar(const std::string& uri, uint64_t autoRefreshIntervalMillis):
     _pICalendar(0),
     _uri(""),
 //    _autoUpdateTimer(0, autoRefreshInterval),
     _nextUpdate(0),
-    _autoUpdateInterval(autoRefreshInterval),
-    _calendarBuffer("")
+    _autoRefreshIntervalMillis(autoRefreshIntervalMillis)
 {
     ofAddListener(ofEvents().update, this, &ICalendar::update);
 
@@ -34,13 +33,13 @@ ICalendar::ICalendar(const std::string& uri, unsigned long long autoRefreshInter
 ICalendar::ICalendar(const ICalendar& other):
     _pICalendar(0),
     _uri(other._uri),
-    _autoUpdateInterval(other._autoUpdateInterval),
+    _autoRefreshIntervalMillis(other._autoRefreshIntervalMillis),
 //
 //    _autoUpdateTimer(other._autoUpdateTimer.getStartInterval(),
 //                     other._autoUpdateTimer.getPeriodicInterval()),
     _calendarBuffer(other._calendarBuffer)
 {
-    if(other._pICalendar)
+    if (other._pICalendar)
     {
         _pICalendar = icalcomponent_new_clone(other._pICalendar);
     }
@@ -93,9 +92,9 @@ Poco::URI ICalendar::getURI() const
 }
 
 
-void ICalendar::setAutoRefreshInterval(unsigned long long autoRefreshInterval)
+void ICalendar::setAutoRefreshIntervalMillis(uint64_t autoRefreshIntervalMillis)
 {
-    _autoUpdateInterval = autoRefreshInterval;
+    _autoRefreshIntervalMillis = autoRefreshIntervalMillis;
 
 //    if (0 == _autoUpdateTimer.getPeriodicInterval())
 //    {
@@ -107,10 +106,10 @@ void ICalendar::setAutoRefreshInterval(unsigned long long autoRefreshInterval)
 }
 
 
-unsigned long long ICalendar::getAutoRefreshInterval() const
+uint64_t ICalendar::getAutoRefreshIntervalMillis() const
 {
 //    return _autoUpdateTimer.getPeriodicInterval();
-    return _autoUpdateInterval;
+    return _autoRefreshIntervalMillis;
 }
 
 
@@ -450,8 +449,8 @@ ICalendar::EventInstances ICalendar::getEventInstances(const Interval& interval)
         icalcomponent* pEventComponent = 0;
         icalproperty* pProperty = 0;
 
-        struct icaltimetype start = icaltime_from_timet(interval.getStart().epochTime(), false);
-        struct icaltimetype end = icaltime_from_timet(interval.getEnd().epochTime(), false);
+        struct icaltimetype start = icaltime_from_timet_with_zone(interval.getStart().epochTime(), false, icaltimezone_get_utc_timezone());
+        struct icaltimetype end = icaltime_from_timet_with_zone(interval.getEnd().epochTime(), false, icaltimezone_get_utc_timezone());
 
         pEventComponent = icalcomponent_get_first_component(_pICalendar,
                                                             ICAL_VEVENT_COMPONENT);
@@ -532,7 +531,7 @@ icalcomponent* ICalendar::getComponent() const
 
 void ICalendar::update(ofEventArgs& args)
 {
-    ofScopedLock lock(_mutex);
+    std::unique_lock<std::mutex> lock(_mutex);
 
     if (_calendarBuffer.size() > 0)
     {
@@ -578,7 +577,7 @@ bool ICalendar::loadURI(const Poco::URI& uri, ofBuffer& buffer)
     {
         Poco::File file(ofToDataPath(uri.getPath(), true));
 
-        if(file.exists())
+        if (file.exists())
         {
             buffer = ofBufferFromFile(file.path());
             return true;

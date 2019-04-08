@@ -34,17 +34,17 @@ public:
 
     /// \brief Creates a Watcher.
     /// \param calendar A shared pointer to a calendar to watch.
-    ICalendarWatcher(ICalendar::SharedPtr calendar);
+    ICalendarWatcher(std::shared_ptr<ICalendar> calendar);
 
     /// \brief Destroys the watcher.
     virtual ~ICalendarWatcher();
 
     /// \brief Sets the update interval in milliseconds.
     /// \param updateInterval the update interval in milliseconds.
-    void setUpdateInterval(unsigned long long updateInterval);
+    void setUpdateIntervalMillis(uint64_t updateIntervalMillis);
 
     /// \returns the current update interval in milliseconds.
-    unsigned long long getUpdateInterval() const;
+    uint64_t getUpdateIntervalMillis() const;
 
     /// \brief A utility method for registering a ListenerClass to listen
     /// for ICalendarWatcherEvents.
@@ -104,18 +104,12 @@ public:
     /// individual events using ofAddListener() and ofRemoveListener().
     ICalendarWatcherEvents events;
 
-    /// \brief The default update interval for updating the watch.
-    static const Poco::Timespan DEFAULT_UPDATE_INTERVAL;
-
-    /// \brief Make a shared instance.
-    static SharedPtr makeShared(ICalendar::SharedPtr calendar)
-    {
-        return SharedPtr(new ICalendarWatcher(calendar));
-    }
+    /// \brief The default update interval for updating the watch in milliseconds.
+    static const Poco::Timespan DEFAULT_UPDATE_INTERVAL_MILLIS;
 
 private:
     /// \brief The calendar being watched.
-    ICalendar::SharedPtr _calendar;
+    std::shared_ptr<ICalendar> _calendar;
 
     /// \brief A collection of all current watches.
     ICalendar::EventInstances _watches;
@@ -124,10 +118,10 @@ private:
     std::map<std::string, Poco::Timestamp> _watchesLastUpdated;
 
     /// \brief The last time the watches were updated.
-    Poco::Timestamp _lastUpdate;
+    Poco::Timestamp _lastUpdateMillis;
 
     /// \brief The timespan for updating the watches.
-    Poco::Timespan _updateInterval;
+    Poco::Timespan _updateIntervalMillis;
 
     /// \brief A callback for the ofApp to keep everything in the
     /// main thread.  Is automatically registered and unregistered

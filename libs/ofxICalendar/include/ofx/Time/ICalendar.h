@@ -39,12 +39,6 @@ class ICalendar:
     public ofThread
 {
 public:
-    /// \brief A shared pointer typedef.
-    typedef std::shared_ptr<ICalendar> SharedPtr;
-
-    /// \brief A weak pointer typedef.
-    typedef std::weak_ptr<ICalendar> WeakPtr;
-
     /// \brief A collection of events.
     typedef std::vector<ICalendarEvent> Events;
 
@@ -54,7 +48,7 @@ public:
     /// \brief Creates a calendar with the given uri.
     /// \param uri the uri of the calnedar.
     /// \param autoRefreshInterval the automatic refresh interval.
-    ICalendar(const std::string& uri, unsigned long long autoRefreshInterval = 0);
+    ICalendar(const std::string& uri, uint64_t autoRefreshInterval = 0);
 
     /// \brief Copy constructor.
     ///
@@ -101,13 +95,13 @@ public:
     /// If no URI has been loaded, no auto updates will be attempted.
     /// Auto update is disabled if the interval is set to 0.
     ///
-    /// \param autoRefreshInterval automatic refresh interval in milliseconds.
-    void setAutoRefreshInterval(unsigned long long autoRefreshInterval);
+    /// \param autoRefreshIntervalMillis automatic refresh interval in milliseconds.
+    void setAutoRefreshIntervalMillis(uint64_t autoRefreshIntervalMillis);
 
-    /// \brief Get the auto refresh interval.
-    /// \returns Returns the number of milliseconds in the refresh interval.
+    /// \brief Get the auto refresh interval in milliseconds.
+    /// \returns the number of milliseconds in the refresh interval
     /// or 0 if auto refresh is disabled.
-    unsigned long long getAutoRefreshInterval() const;
+    uint64_t getAutoRefreshIntervalMillis() const;
 
     /// \brief Loads data from a text buffer containing an icalendar file.
     ///
@@ -191,13 +185,6 @@ public:
     /// calendar to the standard output as a RFC 2445 icalendar string).
 	friend std::ostream& operator << (std::ostream& os, const ICalendar& vec);
 
-    /// \brief Make a shared instance.
-    static SharedPtr makeShared(const std::string& uri,
-                                unsigned long long autoRefreshInterval = 0)
-    {
-        return SharedPtr(new ICalendar(uri, autoRefreshInterval));
-    }
-
     /// \brief The default update interval updating the watch.
     static const Poco::Timespan DEFAULT_UPDATE_INTERVAL;
 
@@ -208,10 +195,10 @@ public:
         {
             Poco::Timestamp now;
 
-            if (_autoUpdateInterval > 0 && now >= _nextUpdate)
+            if (_autoRefreshIntervalMillis > 0 && now >= _nextUpdate)
             {
                 reload();
-                _nextUpdate = now + _autoUpdateInterval * Poco::Timespan::MILLISECONDS;
+                _nextUpdate = now + _autoRefreshIntervalMillis * Poco::Timespan::MILLISECONDS;
             }
 
             sleep(1000);
@@ -230,7 +217,7 @@ public:
             {
                 //cout << "success!." << endl;
 
-                ofScopedLock lock(_mutex);
+                std::unique_lock<std::mutex> lock(_mutex);
                 _calendarBuffer = buffer; // lock while we set the buffer
             }
             else
@@ -254,13 +241,13 @@ private:
     Poco::Timestamp _nextUpdate;
 
     /// \brief An automatic update interval.
-    unsigned long long _autoUpdateInterval;
+    uint64_t _autoRefreshIntervalMillis;
 
     /// \brief A string buffer to hold the auto-refreshed ICalendar buffer.
     ofBuffer _calendarBuffer;
 
     /// \brief The mutex used to prevent simultaneous calls to parse.
-    mutable ofMutex _mutex;
+    mutable std::mutex _mutex;
 
     /// \brief A callback for the ofApp to keep everything in the main thread.
     ///

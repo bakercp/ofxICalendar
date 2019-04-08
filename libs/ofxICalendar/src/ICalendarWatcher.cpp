@@ -12,15 +12,15 @@ namespace ofx {
 namespace Time {
 
 
-const Poco::Timespan ICalendarWatcher::DEFAULT_UPDATE_INTERVAL = 1 * Poco::Timespan::MINUTES;
+const Poco::Timespan ICalendarWatcher::DEFAULT_UPDATE_INTERVAL_MILLIS = 1 * Poco::Timespan::MINUTES;
 
 
-ICalendarWatcher::ICalendarWatcher(ICalendar::SharedPtr calendar):
+ICalendarWatcher::ICalendarWatcher(std::shared_ptr<ICalendar> calendar):
     _calendar(calendar),
-    _updateInterval(DEFAULT_UPDATE_INTERVAL)
+    _updateIntervalMillis(DEFAULT_UPDATE_INTERVAL_MILLIS)
 {
-    _lastUpdate.update();
-    _lastUpdate -= DEFAULT_UPDATE_INTERVAL.totalMicroseconds();
+    _lastUpdateMillis.update();
+    _lastUpdateMillis -= DEFAULT_UPDATE_INTERVAL_MILLIS.totalMicroseconds();
 
     ofAddListener(ofEvents().update, this, &ICalendarWatcher::update);
 }
@@ -32,15 +32,15 @@ ICalendarWatcher::~ICalendarWatcher()
 }
 
 
-void ICalendarWatcher::setUpdateInterval(unsigned long long updateInterval)
+void ICalendarWatcher::setUpdateIntervalMillis(uint64_t updateIntervalMillis)
 {
-    _updateInterval = Poco::Timespan(Poco::Timespan::MILLISECONDS * updateInterval);
+    _updateIntervalMillis = Poco::Timespan(Poco::Timespan::MILLISECONDS * updateIntervalMillis);
 }
 
 
-unsigned long long ICalendarWatcher::getUpdateInterval() const
+uint64_t ICalendarWatcher::getUpdateIntervalMillis() const
 {
-    return _updateInterval.milliseconds();
+    return _updateIntervalMillis.milliseconds();
 }
 
 
@@ -120,7 +120,7 @@ void ICalendarWatcher::refresh()
             Poco::Timestamp startTime = instance.getInterval().getStart();
             Poco::Timestamp endTime = instance.getInterval().getEnd();
 
-            if (!instance.isValidEventInstance() || endTime.epochTime() < _lastUpdate.epochTime())
+            if (!instance.isValidEventInstance() || endTime.epochTime() < _lastUpdateMillis.epochTime())
             {
                 ofNotifyEvent(events.onEventRemoved, instance, this);
             }
@@ -164,7 +164,7 @@ void ICalendarWatcher::refresh()
             Poco::Timestamp startTime = instance.getInterval().getStart();
             Poco::Timestamp endTime = instance.getInterval().getEnd();
 
-            if (startTime.epochTime() >= _lastUpdate.epochTime())
+            if (startTime.epochTime() >= _lastUpdateMillis.epochTime())
             {
                 ofNotifyEvent(events.onEventStarted, instance, this);
             }
@@ -198,7 +198,7 @@ void ICalendarWatcher::refresh()
         ofLogError("ICalendarWatcher::refresh()") << "Calendar null.";
     }
 
-    _lastUpdate = now;
+    _lastUpdateMillis = now;
 }
 
 bool ICalendarWatcher::compareUID(const ICalendarEventInstance& lhs,
@@ -210,7 +210,7 @@ bool ICalendarWatcher::compareUID(const ICalendarEventInstance& lhs,
 
 void ICalendarWatcher::update(ofEventArgs& args)
 {
-    if (_lastUpdate.isElapsed(_updateInterval.totalMicroseconds()))
+    if (_lastUpdateMillis.isElapsed(_updateIntervalMillis.totalMicroseconds()))
     {
         refresh();
     }
