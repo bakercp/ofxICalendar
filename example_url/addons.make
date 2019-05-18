@@ -1,4 +1,3 @@
 ofxICalendar
-ofxIO
 ofxPoco
 ofxTime

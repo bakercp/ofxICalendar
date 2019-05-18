@@ -15,15 +15,18 @@ namespace Time {
 const Poco::Timespan ICalendar::DEFAULT_UPDATE_INTERVAL = 0;
 
 
+//    PollingThread(std::function<void()> threadedFunction,
+//                  uint64_t pollingInterval = DEFAULT_POLLING_INTERVAL,
+
+
 ICalendar::ICalendar(const std::string& uri, uint64_t autoRefreshIntervalMillis):
     _pICalendar(0),
     _uri(""),
 //    _autoUpdateTimer(0, autoRefreshInterval),
     _nextUpdate(0),
-    _autoRefreshIntervalMillis(autoRefreshIntervalMillis)
+    _updateListener(ofEvents().update.newListener(this, &ICalendar::update)),
+    IO::PollingThread(std::bind(&ICalendar::reload, this), autoRefreshIntervalMillis)
 {
-    ofAddListener(ofEvents().update, this, &ICalendar::update);
-
     setURI(uri);
 
 //    _autoUpdateTimer.start(Poco::TimerCallback<ICalendar>(*this, &ICalendar::onAutoUpdate));
@@ -31,20 +34,19 @@ ICalendar::ICalendar(const std::string& uri, uint64_t autoRefreshIntervalMillis)
 
 
 ICalendar::ICalendar(const ICalendar& other):
-    _pICalendar(0),
+    _pICalendar(nullptr),
     _uri(other._uri),
-    _autoRefreshIntervalMillis(other._autoRefreshIntervalMillis),
 //
 //    _autoUpdateTimer(other._autoUpdateTimer.getStartInterval(),
 //                     other._autoUpdateTimer.getPeriodicInterval()),
-    _calendarBuffer(other._calendarBuffer)
+    _calendarBuffer(other._calendarBuffer),
+    _updateListener(ofEvents().update.newListener(this, &ICalendar::update)),
+    IO::PollingThread(std::bind(&ICalendar::reload, this), other.getPollingInterval())
 {
     if (other._pICalendar)
     {
         _pICalendar = icalcomponent_new_clone(other._pICalendar);
     }
-
-    ofAddListener(ofEvents().update, this, &ICalendar::update);
 }
 
 
@@ -57,12 +59,10 @@ ICalendar& ICalendar::operator = (ICalendar other)
 
 ICalendar::~ICalendar()
 {
-    ofRemoveListener(ofEvents().update, this, &ICalendar::update);
-
     if (_pICalendar)
     {
         icalcomponent_free(_pICalendar);
-        _pICalendar = 0;
+        _pICalendar = nullptr;
     }
 }
 
@@ -89,27 +89,6 @@ void ICalendar::setURI(const std::string& uri)
 Poco::URI ICalendar::getURI() const
 {
     return _uri;
-}
-
-
-void ICalendar::setAutoRefreshIntervalMillis(uint64_t autoRefreshIntervalMillis)
-{
-    _autoRefreshIntervalMillis = autoRefreshIntervalMillis;
-
-//    if (0 == _autoUpdateTimer.getPeriodicInterval())
-//    {
-//        _autoUpdateTimer.stop();
-//        _autoUpdateTimer.start(Poco::TimerCallback<ICalendar>(*this, &ICalendar::onAutoUpdate));
-//    }
-//
-//    _autoUpdateTimer.restart(autoRefreshInterval);
-}
-
-
-uint64_t ICalendar::getAutoRefreshIntervalMillis() const
-{
-//    return _autoUpdateTimer.getPeriodicInterval();
-    return _autoRefreshIntervalMillis;
 }
 
 
@@ -383,7 +362,7 @@ ICalendar::Events ICalendar::getEvents() const
 
                 if (pUID)
                 {
-                    events.push_back(ICalendarEvent((ICalendarInterface*)this, std::string(pUID)));
+                    events.push_back(ICalendarEvent(reinterpret_cast<const ICalendarInterface*>(this), std::string(pUID)));
                 }
                 else
                 {

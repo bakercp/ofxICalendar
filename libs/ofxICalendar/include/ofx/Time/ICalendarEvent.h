@@ -181,10 +181,10 @@ private:
     ///
     /// \param pParent A pointer to the parent ICalendar store.
     /// \param uid The uid of this event.
-    ICalendarEvent(ICalendarInterface* pParent, std::string uid);
+    ICalendarEvent(const ICalendarInterface* pParent, std::string uid);
 
     /// \brief The ICalendar store.
-    ICalendarInterface* _pParent;
+    const ICalendarInterface* _pParent = nullptr;
 
     /// \brief The event's uid
     std::string _uid;

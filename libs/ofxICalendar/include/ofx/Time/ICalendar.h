@@ -18,6 +18,7 @@
 #include "Poco/Timezone.h"
 #include "Poco/Timer.h"
 #include "Poco/URI.h"
+#include "ofx/IO/PollingThread.h"
 #include "ofx/Time/ICalendarInterface.h"
 #include "ofx/Time/ICalendarEvent.h"
 #include "ofx/Time/ICalendarEventInstance.h"
@@ -36,7 +37,7 @@ namespace Time {
 /// \brief The ICalendar class implements the RFC 2445 icalendar format.
 class ICalendar:
     public ICalendarInterface,
-    public ofThread
+    public IO::PollingThread
 {
 public:
     /// \brief A collection of events.
@@ -47,8 +48,8 @@ public:
 
     /// \brief Creates a calendar with the given uri.
     /// \param uri the uri of the calnedar.
-    /// \param autoRefreshInterval the automatic refresh interval.
-    ICalendar(const std::string& uri, uint64_t autoRefreshInterval = 0);
+    /// \param autoRefreshIntervalMillis the automatic refresh interval.
+    ICalendar(const std::string& uri, uint64_t autoRefreshIntervalMillis = 0);
 
     /// \brief Copy constructor.
     ///
@@ -171,13 +172,9 @@ public:
     /// \returns all event instances that contain the given timestamp.
     EventInstances getEventInstances(const Poco::Timestamp& timestamp) const;
 
-    /// \brief Get the raw icalcomponent pointer.
-    /// \returns a pointer the underlying libicalcomponent.
-    icalcomponent* getComponent();
+    icalcomponent* getComponent() override;
 
-    /// \brief Get the raw icalcomponent pointer.
-    /// \returns a pointer to the the underlying libicalcomponent.
-    icalcomponent* getComponent() const;
+    icalcomponent* getComponent() const override;
 
     /// \brief Passes the internal icalcomponent text to the output stream.
     ///
@@ -187,23 +184,6 @@ public:
 
     /// \brief The default update interval updating the watch.
     static const Poco::Timespan DEFAULT_UPDATE_INTERVAL;
-
-    /// \brief The thread function used for auto updates.
-    virtual void threadedFunction()
-    {
-        while (isThreadRunning())
-        {
-            Poco::Timestamp now;
-
-            if (_autoRefreshIntervalMillis > 0 && now >= _nextUpdate)
-            {
-                reload();
-                _nextUpdate = now + _autoRefreshIntervalMillis * Poco::Timespan::MILLISECONDS;
-            }
-
-            sleep(1000);
-        }
-    }
 
     /// \brief Reload the calendar from the URI.
     void reload()
@@ -232,7 +212,7 @@ private:
     /// \brief The underlying libical representation of the calendar.
     ///
     /// The C++ wrapper manages the memory internally.
-    icalcomponent* _pICalendar;
+    icalcomponent* _pICalendar = nullptr;
 
     /// \brief The URI of the store.
     Poco::URI _uri;
@@ -241,10 +221,13 @@ private:
     Poco::Timestamp _nextUpdate;
 
     /// \brief An automatic update interval.
-    uint64_t _autoRefreshIntervalMillis;
+    uint64_t _autoRefreshIntervalMillis = 0;
 
     /// \brief A string buffer to hold the auto-refreshed ICalendar buffer.
     ofBuffer _calendarBuffer;
+
+    /// \brief The update event listener.
+    ofEventListener _updateListener;
 
     /// \brief The mutex used to prevent simultaneous calls to parse.
     mutable std::mutex _mutex;

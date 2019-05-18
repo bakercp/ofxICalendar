@@ -19,10 +19,10 @@ using namespace ofx::Time;
 class ofApp: public ofBaseApp
 {
 public:
-    void setup() override;
-    void draw() override;
+    void setup();
+    void draw();
 
-    void gotMessage(ofMessage msg) override;
+    void gotMessage(ofMessage msg);
 
     void onCalendarWatcherEventAdded(const ICalendarEventInstance& instance);
     void onCalendarWatcherEventRemoved(const ICalendarEventInstance& instance);
@@ -33,10 +33,10 @@ public:
 
     void processInstance(const ICalendarEventInstance& instance);
 
-    std::shared_ptr<ICalendar> calendar;
-    std::shared_ptr<ICalendarWatcher> watcher;
+    ICalendar::SharedPtr calendar;
+    ICalendarWatcher::SharedPtr watcher;
 
-    std::shared_ptr<CalendarWidget> calendarWidget;
+    CalendarWidget::SharedPtr calendarWidget;
 
     enum
     {
@@ -45,7 +45,6 @@ public:
 
     std::deque<std::string> messages;
 
-    ofColor currentColor;
-    float currentSpeed;
+    float printInterval;
 
 };

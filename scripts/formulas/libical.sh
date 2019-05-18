@@ -17,7 +17,13 @@ function download() {
     local LIB_NAME_VER=${LIB_NAME}-${VER}
     local FILE_SUFFIX=.tar.gz
 
-    curl -LkO https://github.com/libical/libical/releases/download/v${VER}/${LIB_NAME_VER}${FILE_SUFFIX}
+    local URL=https://github.com/libical/libical/releases/download/v${VER}/${LIB_NAME_VER}${FILE_SUFFIX}
+
+    echo ${URL}
+    curl -LkO ${URL}
+ 
+ 
+ 
     tar -xjvf ${LIB_NAME_VER}${FILE_SUFFIX}
     mv ${LIB_NAME_VER} ${LIB_NAME}
     rm ${LIB_NAME_VER}${FILE_SUFFIX}

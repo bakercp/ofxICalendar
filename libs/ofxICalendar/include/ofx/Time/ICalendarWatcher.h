@@ -29,8 +29,8 @@ namespace Time {
 class ICalendarWatcher
 {
 public:
-    /// \brief A shared pointer.
-    typedef std::shared_ptr<ICalendarWatcher> SharedPtr;
+//    /// \brief A shared pointer.
+//    typedef std::shared_ptr<ICalendarWatcher> SharedPtr;
 
     /// \brief Creates a Watcher.
     /// \param calendar A shared pointer to a calendar to watch.

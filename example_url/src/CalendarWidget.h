@@ -23,19 +23,26 @@ using namespace ofx::Time;
 class CalendarWidget
 {
 public:
-    CalendarWidget(std::shared_ptr<ICalendar> calendar, const ofRectangle& window);
+    typedef std::shared_ptr<CalendarWidget> SharedPtr;
+
+    CalendarWidget(ICalendar::SharedPtr calendar, const ofRectangle& window);
 
     virtual ~CalendarWidget();
 
+    /// A callback for the ofApp to keep everything in the
+    /// main thread.  Is automatically registered and unregistered
+    /// upon CalendarWidget construction and destruction.
     void update(ofEventArgs& args);
-        ///< A callback for the ofApp to keep everything in the
-        ///< main thread.  Is automatically registered and unregistered
-        ///< upon CalendarWidget construction and destruction.
 
     void draw();
 
+    static SharedPtr makeShared(ICalendar::SharedPtr calendar, const ofRectangle& window)
+    {
+        return SharedPtr(new CalendarWidget(calendar, window));
+    }
+
 private:
-    std::shared_ptr<ICalendar> _calendar;
+    ICalendar::SharedPtr _calendar;
     ofRectangle _window;
 
     ICalendar::EventInstances _currentEvents;

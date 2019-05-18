@@ -28,7 +28,7 @@ public:
     virtual icalcomponent* getComponent() = 0;
 
     /// \returns the underlying libicalcomponent.
-    virtual const icalcomponent* getComponent() const = 0;
+    virtual icalcomponent* getComponent() const = 0;
 
 };
 

@@ -8,8 +8,7 @@
 #include "CalendarWidget.h"
 
 
-CalendarWidget::CalendarWidget(std::shared_ptr<ICalendar> calendar,
-                               const ofRectangle& window):
+CalendarWidget::CalendarWidget(ICalendar::SharedPtr calendar, const ofRectangle& window):
     _calendar(calendar),
     _window(window)
 {
@@ -146,14 +145,14 @@ void CalendarWidget::draw()
             }
 
 
-            ofDrawRectangle(x, y0, 80, y1 - y0);
+            ofDrawRectRounded(x, y0, 80, y1 - y0, 5);
 
             ofNoFill();
             ofSetColor(127);
-            ofDrawRectangle(x, y0, 80, y1 - y0);
+            ofDrawRectRounded(x, y0, 80, y1 - y0, 5);
 
             ofSetColor(255);
-            ofDrawRectangle(x-1, y0-1, 80+2, y1 - y0+2);
+            ofDrawRectRounded(x-1, y0-1, 80+2, y1 - y0+2, 5);
 
 
             std::string startLabel = Utils::format(Poco::LocalDateTime(interval.getStart()), formatStringHour);
@@ -165,7 +164,7 @@ void CalendarWidget::draw()
             _font.drawString(startLabel,         x + 5, y0 + 20);
             _font.drawString(endLabel,           x + 5, y0 + 30);
             
-            x += 84;
+            x+= 84;
             
             if (x > _window.getWidth() - 160) x = 0;
             

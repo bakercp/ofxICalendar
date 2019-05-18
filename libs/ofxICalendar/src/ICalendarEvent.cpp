@@ -12,7 +12,7 @@ namespace ofx {
 namespace Time {
 
 
-ICalendarEvent::ICalendarEvent(ICalendarInterface* pParent,
+ICalendarEvent::ICalendarEvent(const ICalendarInterface* pParent,
                                std::string uid):
     _pParent(pParent),
     _uid(uid)
@@ -513,6 +513,7 @@ bool ICalendarEvent::operator <= (const ICalendarEvent& event) const
     return getUID() <= event.getUID();
 }
 
+
 std::string ICalendarEvent::getProperty(icalproperty_kind kind) const
 {
     icalcomponent* pEventComponent = getEventComponent();
@@ -599,7 +600,7 @@ icalcomponent* ICalendarEvent::getEventComponentForUID(icalcomponent* pParentCom
 
                 if (pUID)
                 {
-                    if(uid == std::string(pUID))
+                    if (uid == std::string(pUID))
                     {
                         return pEventComponent;
                     }
@@ -623,12 +624,12 @@ icalcomponent* ICalendarEvent::getEventComponentForUID(icalcomponent* pParentCom
         }
 
         // No event with the given UID was found.
-        return 0;
+        return nullptr;
     }
     else
     {
         ofLogError("ICalendar::getEventComponentForUID()") << "Parent is not valid.";
-        return 0;
+        return nullptr;
     }
 }
 
@@ -675,7 +676,7 @@ void ICalendarEvent::recurrencesCallback(icalcomponent* component,
     }
     else
     {
-        ofLogError("Event::recurrancesCallback()") << "Instances vector is == 0";
+        ofLogError("Event::recurrancesCallback()") << "Instances vector is == nullptr";
     }
 }
 
